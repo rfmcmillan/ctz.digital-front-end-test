@@ -14,7 +14,7 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 function valuetext(value) {
-  return `${value}%`;
+  return `${value}`;
 }
 
 const Settings = (props) => {
@@ -36,7 +36,6 @@ const Settings = (props) => {
     accountType: { margin: ".5rem" },
     accountTypeLabel: { fontSize: ".75rem" },
     enabled: { margin: ".5rem" },
-
     revenueShareContain: { margin: ".5rem" },
     revenueShareLabel: {
       fontSize: ".75rem",

@@ -12,6 +12,11 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import ScriptDelaySlider from "./ScriptDelaySlider";
+
+function valuetext(value) {
+  return `${value} milliseconds`;
+}
 
 const Site = (props) => {
   const { site } = props;
@@ -19,6 +24,7 @@ const Site = (props) => {
 
   const useStyles = makeStyles({
     root: { width: "33vw", margin: 10, padding: ".5rem" },
+    scriptDelay: { width: 250 },
   });
   const classes = useStyles();
 
@@ -36,6 +42,11 @@ const Site = (props) => {
         Site URL
       </Typography>
       <Typography>{site.domain}</Typography>
+      <Typography variant="caption" color="textSecondary">
+        Enabled
+      </Typography>
+      <Typography>{site.enabled ? "Yes" : "No"}</Typography>
+      <ScriptDelaySlider scriptDelay={site.scriptDelay} />
     </Paper>
   );
 };
