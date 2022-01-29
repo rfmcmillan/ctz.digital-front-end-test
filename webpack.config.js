@@ -1,14 +1,20 @@
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                loader: "babel-loader",
-                exclude: /node_modules/,
-                options: {
-                    presets: ["@babel/preset-react"],
-                },
-            },
-        ],
-    },
+  entry: ["./client/index.js"],
+  output: {
+    path: __dirname,
+    filename: "./public/bundle.js",
+  },
+  devtool: "source-map",
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
+        options: {
+          presets: ["@babel/preset-react"],
+        },
+      },
+    ],
+  },
 };
