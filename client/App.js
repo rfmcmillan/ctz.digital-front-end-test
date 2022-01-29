@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
-import { Nav } from "./components/Nav.js";
+import Nav from "./components/Nav";
 
 const theme = createTheme({
   palette: {
@@ -27,7 +27,6 @@ const theme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <div>Hello</div>
       <Nav />
     </ThemeProvider>
   );

@@ -1,17 +1,32 @@
 import React from "react";
-import { AppBar, Grid, Toolbar } from "@material-ui/core";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const Nav = () => {
   const theme = useTheme();
-
-  const useStyles = makeStyles({});
+  const useStyles = makeStyles({
+    logoText: {
+      fontFamily: "Fredoka One",
+      fontSize: 25,
+      fontWeight: 900,
+      marginLeft: 10,
+    },
+    root: { backgroundColor: theme.palette.text.primary, boxShadow: "none" },
+    toolBar: { padding: 10 },
+  });
   const classes = useStyles();
 
   return (
     <AppBar className={classes.root} position="static">
       <Toolbar className={classes.toolBar}>
-        <img src="../public/assets/clicktripz-logo.svg" />
+        <img
+          width="70px"
+          src="./assets/clicktripz-logo.svg"
+          alt="Clicktripz Logo"
+        />
+        <Typography variant="h1" className={classes.logoText}>
+          Clicktripz
+        </Typography>
       </Toolbar>
     </AppBar>
   );
