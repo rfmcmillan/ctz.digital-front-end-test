@@ -1,22 +1,22 @@
 import React from "react";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+import { Nav } from "./components/Nav.js";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#264653",
-      contrastText: "#fafafa",
+      main: "#1E9AAA",
+      contrastText: "#ffffff",
     },
     secondary: {
-      main: "#2A9D8F",
-      contrastText: "#264653",
+      main: "#fdb000",
+      contrastText: "#4e4e4e",
     },
     text: {
-      primary: "#264653",
-      secondary: "#2A9D8F",
+      primary: "#4e4e4e",
     },
     info: {
-      main: "#2A9D8F",
+      main: "#06d6a0",
     },
   },
   typography: {
@@ -28,6 +28,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <div>Hello</div>
+      <Nav />
     </ThemeProvider>
   );
 };
