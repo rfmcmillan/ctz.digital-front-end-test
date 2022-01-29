@@ -1,3 +1,5 @@
 node_modules
-public/main.js
+public/bundle.js
+public/bundle.js.map
+public/bundle.js.LICENSE.txt
 package-lock.json
