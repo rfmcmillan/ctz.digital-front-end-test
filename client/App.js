@@ -20,9 +20,6 @@ const theme = createTheme({
       main: "#06d6a0",
     },
   },
-  typography: {
-    fontFamily: ["Poppins", "sans-serif"].join(","),
-  },
 });
 
 const App = () => {
