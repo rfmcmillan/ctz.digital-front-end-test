@@ -26,7 +26,6 @@ const Settings = (props) => {
     },
   } = props;
 
-  console.log("name:", name);
   const [enabled, setEnabled] = useState(general.enabled);
   const [testPublisher, setTestPublisher] = useState(general.testPublisher);
   const [accountType, setAccountType] = useState(general.accountType);

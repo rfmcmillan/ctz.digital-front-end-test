@@ -20,6 +20,7 @@ function valuetext(value) {
 
 const Site = (props) => {
   const { site } = props;
+  const { activeProducts } = site;
   const theme = useTheme();
 
   const useStyles = makeStyles({
@@ -27,6 +28,30 @@ const Site = (props) => {
     scriptDelay: { width: 250 },
   });
   const classes = useStyles();
+
+  const devices = {};
+
+  if (activeProducts) {
+    for (let i = 0; i < activeProducts.length; i++) {
+      const currProduct = activeProducts[i];
+      for (let j = 0; j < currProduct.devices.length; j++) {
+        const currDevice = currProduct.devices[j];
+
+        if (!devices[currDevice.type]) {
+          devices[currDevice.type] = { products: [] };
+        }
+        devices[currDevice.type].products.push(currProduct.type);
+      }
+    }
+  }
+  console.log("devices:", devices);
+
+  // for (let i = 0; i < activeProducts.length; i++) {
+  //   const currProduct = activeProducts[i];
+  //   for (let j = 0; j < activeProducts.devices.length; j++) {
+  //     const currDevice = devices[i];
+  //   }
+  // }
 
   return (
     <Paper className={classes.root}>
@@ -47,9 +72,9 @@ const Site = (props) => {
       </Typography>
       <Typography>{site.enabled ? "Yes" : "No"}</Typography>
       <ScriptDelaySlider scriptDelay={site.scriptDelay} />
-      {site.activeProducts.map((product) => {
+      {/* {site.activeProducts.map((product) => {
         return <div></div>;
-      })}
+      })} */}
     </Paper>
   );
 };
