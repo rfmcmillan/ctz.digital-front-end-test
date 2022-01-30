@@ -7,16 +7,11 @@ import {
   Paper,
   Radio,
   RadioGroup,
-  Slider,
   Switch,
   Typography,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import RevenueShareSlider from "./RevenueShareSlider";
-
-function valuetext(value) {
-  return `${value}`;
-}
 
 const Settings = (props) => {
   const {
