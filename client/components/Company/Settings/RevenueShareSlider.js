@@ -1,34 +1,17 @@
-import React, { useState } from "react";
-import {
-  FormControl,
-  FormLabel,
-  FormControlLabel,
-  Grid,
-  Paper,
-  Radio,
-  RadioGroup,
-  Slider,
-  Switch,
-  Typography,
-} from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import React from "react";
+import { Slider, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 function valuetext(value) {
   return `${value}`;
 }
 
-const Settings = (props) => {
-  const {
-    data: {
-      name,
-      settings: { general, revenue },
-    },
-  } = props;
+function valueLabelFormat(value) {
+  return `${value * 100}%`;
+}
 
-  console.log("name:", name);
-  const [enabled, setEnabled] = useState(general.enabled);
-  const [testPublisher, setTestPublisher] = useState(general.testPublisher);
-  const [accountType, setAccountType] = useState(general.accountType);
+const RevenueShareSlider = (props) => {
+  const { publisherShare } = props;
 
   const useStyles = makeStyles({
     revenueShareContain: { margin: ".5rem" },
@@ -38,6 +21,38 @@ const Settings = (props) => {
     revenueShareSlider: { width: 250 },
   });
   const classes = useStyles();
+
+  const marks = [
+    {
+      value: 0.1,
+      label: "10%",
+    },
+    {
+      value: 0.2,
+    },
+    {
+      value: 0.3,
+    },
+    {
+      value: 0.4,
+    },
+    {
+      value: 0.5,
+    },
+    {
+      value: 0.6,
+    },
+    {
+      value: 0.7,
+    },
+    {
+      value: 0.8,
+    },
+    {
+      value: 0.9,
+      label: "90%",
+    },
+  ];
 
   return (
     <div className={classes.revenueShareContain}>
@@ -51,12 +66,13 @@ const Settings = (props) => {
       </Typography>
       <Slider
         className={classes.revenueShareSlider}
-        defaultValue={revenue.publisherShare}
+        defaultValue={publisherShare}
         getAriaValueText={valuetext}
         aria-labelledby="revenue-share-slider"
         valueLabelDisplay="auto"
+        valueLabelFormat={valueLabelFormat}
         step={0.1}
-        marks={true}
+        marks={marks}
         min={0.1}
         max={0.9}
       />
@@ -64,4 +80,4 @@ const Settings = (props) => {
   );
 };
 
-export default Settings;
+export default RevenueShareSlider;

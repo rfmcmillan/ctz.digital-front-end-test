@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import RevenueShareSlider from "./RevenueShareSlider";
 
 function valuetext(value) {
   return `${value}`;
@@ -118,27 +119,7 @@ const Settings = (props) => {
           <FormControlLabel value="CTPro" control={<Radio />} label="CTPro" />
         </RadioGroup>
       </FormControl>
-      <div className={classes.revenueShareContain}>
-        <Typography
-          id="revenue-share-slider"
-          className={classes.revenueShareLabel}
-          color="textSecondary"
-          gutterBottom
-        >
-          Revenue Share
-        </Typography>
-        <Slider
-          className={classes.revenueShareSlider}
-          defaultValue={revenue.publisherShare}
-          getAriaValueText={valuetext}
-          aria-labelledby="revenue-share-slider"
-          valueLabelDisplay="auto"
-          step={0.1}
-          marks={true}
-          min={0.1}
-          max={0.9}
-        />
-      </div>
+      <RevenueShareSlider publisherShare={revenue.publisherShare} />
     </Paper>
   );
 };

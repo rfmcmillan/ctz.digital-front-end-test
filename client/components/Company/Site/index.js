@@ -47,6 +47,9 @@ const Site = (props) => {
       </Typography>
       <Typography>{site.enabled ? "Yes" : "No"}</Typography>
       <ScriptDelaySlider scriptDelay={site.scriptDelay} />
+      {site.activeProducts.map((product) => {
+        return <div></div>;
+      })}
     </Paper>
   );
 };

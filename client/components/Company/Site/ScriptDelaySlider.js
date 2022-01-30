@@ -14,7 +14,8 @@ const ScriptDelaySlider = (props) => {
   const { scriptDelay } = props;
 
   const useStyles = makeStyles({
-    scriptDelay: { width: 250 },
+    scriptDelayContain: { margin: ".75rem" },
+    scriptDelaySlider: { width: 250 },
   });
   const classes = useStyles();
 
@@ -57,7 +58,7 @@ const ScriptDelaySlider = (props) => {
   ];
 
   return (
-    <Grid container direction="column">
+    <Grid className={classes.scriptDelayContain} container direction="column">
       <Grid item>
         <Typography
           id="script-delay-slider"
@@ -70,7 +71,7 @@ const ScriptDelaySlider = (props) => {
       </Grid>
       <Grid item>
         <Slider
-          className={classes.scriptDelay}
+          className={classes.scriptDelaySlider}
           defaultValue={scriptDelay}
           getAriaValueText={valuetext}
           aria-labelledby="script-delay-slider"
