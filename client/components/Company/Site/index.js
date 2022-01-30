@@ -23,13 +23,18 @@ const Site = (props) => {
   const theme = useTheme();
 
   const useStyles = makeStyles({
+    delaySlider: { margin: ".5rem" },
+    enabled: { margin: ".5rem" },
+    id: { margin: ".5rem" },
     list: {
       backgroundColor: theme.palette.info.contrastText,
       margin: "1rem",
-      minHeight: 300,
+      minHeight: 250,
     },
-    root: { margin: 10, padding: ".5rem" },
+    name: { margin: ".5rem" },
+    root: { margin: 10, padding: ".75rem" },
     scriptDelay: { width: 250 },
+    url: { margin: ".5rem" },
   });
   const classes = useStyles();
 
@@ -56,29 +61,48 @@ const Site = (props) => {
 
   return (
     <Paper className={classes.root}>
-      <Typography variant="caption" color="textSecondary">
-        ID
-      </Typography>
-      <Typography>{site.id}</Typography>
-      <Typography variant="caption" color="textSecondary">
-        Name
-      </Typography>
-      <Typography>{site.name ? site.name : site.displayName}</Typography>
-      <Typography variant="caption" color="textSecondary">
-        Site URL
-      </Typography>
-      <Typography>{site.domain}</Typography>
-      <Typography variant="caption" color="textSecondary">
-        Enabled
-      </Typography>
-      <Typography>{site.enabled ? "Yes" : "No"}</Typography>
-      <ScriptDelaySlider scriptDelay={site.scriptDelay} />
+      <Grid container>
+        <Grid item container direction="column" xs={6}>
+          <Grid item className={classes.name}>
+            <Typography variant="caption" color="textSecondary">
+              Name
+            </Typography>
+            <Typography>{site.name ? site.name : site.displayName}</Typography>
+          </Grid>
+          <Grid className={classes.id} item>
+            <Typography variant="caption" color="textSecondary">
+              ID
+            </Typography>
+            <Typography>{site.id}</Typography>
+          </Grid>
+        </Grid>
+        <Grid item container xs={6} direction="column">
+          <Grid className={classes.url} item>
+            <Typography variant="caption" color="textSecondary">
+              Site URL
+            </Typography>
+            <Typography>{site.domain}</Typography>
+          </Grid>
+          <Grid item className={classes.enabled}>
+            <Typography variant="caption" color="textSecondary">
+              Enabled
+            </Typography>
+            <Typography>{site.enabled ? "Yes" : "No"}</Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      <ScriptDelaySlider
+        className={classes.delaySlider}
+        scriptDelay={site.scriptDelay}
+      />
       <Grid container>
         {devicesArray.map((device) => {
           return (
             <Grid key={device[0]} item xs={4}>
               <List
                 className={classes.list}
+                dense={true}
                 key={device[0]}
                 subheader={
                   <ListSubheader>

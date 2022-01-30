@@ -18,7 +18,7 @@ const RevenueShareSlider = (props) => {
     revenueShareLabel: {
       fontSize: ".75rem",
     },
-    revenueShareSlider: { width: 250 },
+    revenueShareSlider: { marginLeft: ".25rem", width: 250 },
   });
   const classes = useStyles();
 

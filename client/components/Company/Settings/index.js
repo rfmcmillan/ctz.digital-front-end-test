@@ -30,7 +30,7 @@ const Settings = (props) => {
   const useStyles = makeStyles({
     accountType: { margin: ".5rem" },
     accountTypeLabel: { fontSize: ".75rem" },
-    enabled: { margin: ".5rem" },
+    enabled: { margin: ".5rem", marginLeft: 0 },
     revenueShareContain: { margin: ".5rem" },
     revenueShareLabel: {
       fontSize: ".75rem",
@@ -107,10 +107,24 @@ const Settings = (props) => {
           value={accountType}
           onChange={handleAccountTypeChange}
         >
-          <FormControlLabel value="CTZero" control={<Radio />} label="CTZero" />
-          <FormControlLabel value="CTLite" control={<Radio />} label="CTLite" />
-          <FormControlLabel value="CTPlus" control={<Radio />} label="CTPlus" />
-          <FormControlLabel value="CTPro" control={<Radio />} label="CTPro" />
+          <Grid container>
+            <FormControlLabel
+              value="CTZero"
+              control={<Radio />}
+              label="CTZero"
+            />
+            <FormControlLabel
+              value="CTLite"
+              control={<Radio />}
+              label="CTLite"
+            />
+            <FormControlLabel
+              value="CTPlus"
+              control={<Radio />}
+              label="CTPlus"
+            />
+            <FormControlLabel value="CTPro" control={<Radio />} label="CTPro" />
+          </Grid>
         </RadioGroup>
       </FormControl>
       <RevenueShareSlider publisherShare={revenue.publisherShare} />

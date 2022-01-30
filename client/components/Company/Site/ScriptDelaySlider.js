@@ -14,8 +14,8 @@ const ScriptDelaySlider = (props) => {
   const { scriptDelay } = props;
 
   const useStyles = makeStyles({
-    scriptDelayContain: { margin: ".75rem" },
-    scriptDelaySlider: { width: 250 },
+    scriptDelayContain: { margin: ".5rem" },
+    scriptDelaySlider: { marginLeft: ".5rem", width: 250 },
   });
   const classes = useStyles();
 
