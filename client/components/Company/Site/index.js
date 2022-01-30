@@ -46,13 +46,6 @@ const Site = (props) => {
   }
   console.log("devices:", devices);
 
-  // for (let i = 0; i < activeProducts.length; i++) {
-  //   const currProduct = activeProducts[i];
-  //   for (let j = 0; j < activeProducts.devices.length; j++) {
-  //     const currDevice = devices[i];
-  //   }
-  // }
-
   return (
     <Paper className={classes.root}>
       <Typography variant="caption" color="textSecondary">
