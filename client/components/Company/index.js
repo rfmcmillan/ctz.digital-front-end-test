@@ -35,6 +35,7 @@ const Company = () => {
         direction="column"
         alignItems="center"
         className={classes.contain}
+        spacing={1}
       >
         <Grid item>
           <Typography className={classes.name} variant="h2">

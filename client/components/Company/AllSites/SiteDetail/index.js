@@ -35,10 +35,16 @@ const SiteDetail = (props) => {
       borderRadius: 12,
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
-      margin: 10,
+
       padding: ".75rem",
     },
     scriptDelay: { width: 250 },
+    sitesHeading: {
+      color: theme.palette.text.primary,
+      fontSize: "1.5rem",
+      fontWeight: "700",
+      margin: ".5rem",
+    },
     url: { margin: ".5rem" },
   });
   const classes = useStyles();
@@ -65,72 +71,79 @@ const SiteDetail = (props) => {
   const devicesArray = Object.entries(devices);
 
   return (
-    <Paper elevation={5} className={classes.root}>
-      <Grid container>
-        <Grid item container direction="column" xs={6}>
-          <Grid item className={classes.name}>
-            <Typography variant="caption" color="textSecondary">
-              Name
-            </Typography>
-            <Typography>{site.name ? site.name : site.displayName}</Typography>
-          </Grid>
-          <Grid className={classes.id} item>
-            <Typography variant="caption" color="textSecondary">
-              ID
-            </Typography>
-            <Typography>{site.id}</Typography>
-          </Grid>
-        </Grid>
-        <Grid item container xs={6} direction="column">
-          <Grid className={classes.url} item>
-            <Typography variant="caption" color="textSecondary">
-              Site URL
-            </Typography>
-            <Typography>{site.domain}</Typography>
-          </Grid>
-          <Grid item className={classes.enabled}>
-            <Typography variant="caption" color="textSecondary">
-              Enabled
-            </Typography>
-            <Typography>{site.enabled ? "Yes" : "No"}</Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      <ScriptDelaySlider
-        className={classes.delaySlider}
-        scriptDelay={site.scriptDelay}
-      />
-      <Grid container>
-        {devicesArray.map((device) => {
-          return (
-            <Grid key={device[0]} item xs={4}>
-              <List
-                className={classes.list}
-                dense={true}
-                key={device[0]}
-                subheader={
-                  <ListSubheader>
-                    {capitalizeDeviceType(device[0])}
-                  </ListSubheader>
-                }
-              >
-                {device[1].products.map((product) => {
-                  return (
-                    <ListItem key={product.type}>
-                      <ListItemText
-                        primary={product.type}
-                        secondary={product.enabled ? "Enabled" : "Disabled"}
-                      />
-                    </ListItem>
-                  );
-                })}
-              </List>
+    <div>
+      <Typography className={classes.sitesHeading} variant="h2">
+        Site Detail
+      </Typography>
+      <Paper elevation={5} className={classes.root}>
+        <Grid container>
+          <Grid item container direction="column" xs={6}>
+            <Grid item className={classes.name}>
+              <Typography variant="caption" color="textSecondary">
+                Name
+              </Typography>
+              <Typography>
+                {site.name ? site.name : site.displayName}
+              </Typography>
             </Grid>
-          );
-        })}
-      </Grid>
-    </Paper>
+            <Grid className={classes.id} item>
+              <Typography variant="caption" color="textSecondary">
+                ID
+              </Typography>
+              <Typography>{site.id}</Typography>
+            </Grid>
+          </Grid>
+          <Grid item container xs={6} direction="column">
+            <Grid className={classes.url} item>
+              <Typography variant="caption" color="textSecondary">
+                Site URL
+              </Typography>
+              <Typography>{site.domain}</Typography>
+            </Grid>
+            <Grid item className={classes.enabled}>
+              <Typography variant="caption" color="textSecondary">
+                Enabled
+              </Typography>
+              <Typography>{site.enabled ? "Yes" : "No"}</Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+
+        <ScriptDelaySlider
+          className={classes.delaySlider}
+          scriptDelay={site.scriptDelay}
+        />
+        <Grid container>
+          {devicesArray.map((device) => {
+            return (
+              <Grid key={device[0]} item xs={4}>
+                <List
+                  className={classes.list}
+                  dense={true}
+                  key={device[0]}
+                  subheader={
+                    <ListSubheader>
+                      {capitalizeDeviceType(device[0])}
+                    </ListSubheader>
+                  }
+                >
+                  {device[1].products.map((product) => {
+                    return (
+                      <ListItem key={product.type}>
+                        <ListItemText
+                          primary={product.type}
+                          secondary={product.enabled ? "Enabled" : "Disabled"}
+                        />
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Paper>
+    </div>
   );
 };
 

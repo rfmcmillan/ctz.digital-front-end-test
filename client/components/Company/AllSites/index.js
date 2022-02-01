@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Site from "./SiteRow";
+import SiteRow from "./SiteRow";
 import SiteDetail from "./SiteDetail";
 
 const AllSites = ({ sites }) => {
@@ -34,13 +34,14 @@ const AllSites = ({ sites }) => {
     name: {
       width: 200,
     },
-    root: { width: "76vw" },
+    root: { width: "76.5vw" },
     sitesHeading: {
       color: theme.palette.text.primary,
       fontSize: "1.5rem",
       fontWeight: "700",
       margin: ".5rem",
     },
+    table: {},
   });
   const classes = useStyles();
 
@@ -62,8 +63,14 @@ const AllSites = ({ sites }) => {
   }, [currSite]);
 
   return (
-    <Grid className={classes.root} container justifyContent="space-between">
-      <Grid item xs={6}>
+    <Grid
+      className={classes.root}
+      container
+      direction="row"
+      justifyContent="space-between"
+      spacing={2}
+    >
+      <Grid className={classes.table} item xs={6}>
         <div>
           <Typography className={classes.sitesHeading} variant="h2">
             Sites
@@ -82,7 +89,14 @@ const AllSites = ({ sites }) => {
             </TableCell>
           </TableRow>
           {sites.map((site) => {
-            return <Site key={site.id} func={getCurrSite} site={site} />;
+            return (
+              <SiteRow
+                currSite={currSite}
+                key={site.id}
+                func={getCurrSite}
+                site={site}
+              />
+            );
           })}
         </div>
       </Grid>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  Chip,
   IconButton,
   List,
   ListItem,
@@ -13,6 +14,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import DoneIcon from "@material-ui/icons/Done";
 import ScriptDelaySlider from "./ScriptDelaySlider";
 
 function capitalizeDeviceType(deviceType) {
@@ -23,9 +25,12 @@ function capitalizeDeviceType(deviceType) {
 
 const SiteRow = (props) => {
   const {
+    currSite,
     site,
     site: { activeProducts },
   } = props;
+  console.log("🚀 ~ file: index.js ~ line 32 ~ SiteRow ~ site", site);
+  console.log("🚀 ~ file: index.js ~ line 32 ~ SiteRow ~ currSite", currSite);
 
   const theme = useTheme();
 
@@ -42,7 +47,14 @@ const SiteRow = (props) => {
     name: { margin: ".5rem" },
     root: {
       backgroundColor: "white",
-
+      borderRadius: 12,
+      boxShadow:
+        "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
+      margin: "10px 0px 10px 0px",
+      maxWidth: 780,
+    },
+    rootCurr: {
+      backgroundColor: theme.palette.secondary.main,
       borderRadius: 12,
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
@@ -82,7 +94,9 @@ const SiteRow = (props) => {
   const devicesArray = Object.entries(devices);
 
   return (
-    <Paper className={classes.root}>
+    <Paper
+      className={currSite.id === site.id ? classes.rootCurr : classes.root}
+    >
       <TableRow elevation={5}>
         <TableCell className={classes.cell}>
           {site.name || site.displayName}
@@ -95,7 +109,16 @@ const SiteRow = (props) => {
         <TableCell className={classes.cell}>{site.domain}</TableCell>
 
         <TableCell className={`${classes.cell} ${classes.enabled}`}>
-          {site.enabled ? "Yes" : "No"}
+          {site.enabled ? (
+            <Chip
+              icon={<DoneIcon />}
+              size="small"
+              label="Enabled"
+              color="secondary"
+            />
+          ) : (
+            <Chip size="small" label="Disabled" />
+          )}
         </TableCell>
         <Typography className={classes.button}>
           <IconButton value={site.id} onClick={handleClick}>
