@@ -3,7 +3,8 @@ import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import data from "../../../data.json";
 import Settings from "./Settings";
-import Site from "./Site";
+
+import AllSites from "./AllSites";
 import { Grid, Typography } from "@material-ui/core";
 
 const Company = () => {
@@ -31,18 +32,7 @@ const Company = () => {
         {data.name}
       </Typography>
       <Settings data={data} />
-      <Typography className={classes.siteHeading} variant="h3">
-        Sites
-      </Typography>
-      <Grid container>
-        {sites.map((site) => {
-          return (
-            <Grid key={site.id} item xs={6}>
-              <Site key={site.id} site={site} />
-            </Grid>
-          );
-        })}
-      </Grid>
+      <AllSites sites={sites} />
     </div>
   );
 };
