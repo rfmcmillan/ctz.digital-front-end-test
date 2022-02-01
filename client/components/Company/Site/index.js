@@ -27,12 +27,17 @@ const Site = (props) => {
     enabled: { margin: ".5rem" },
     id: { margin: ".5rem" },
     list: {
-      backgroundColor: theme.palette.info.contrastText,
       margin: "1rem",
       minHeight: 250,
     },
     name: { margin: ".5rem" },
-    root: { margin: 10, padding: ".75rem" },
+    root: {
+      borderRadius: 12,
+      boxShadow:
+        "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
+      margin: 10,
+      padding: ".75rem",
+    },
     scriptDelay: { width: 250 },
     url: { margin: ".5rem" },
   });
@@ -60,7 +65,7 @@ const Site = (props) => {
   const devicesArray = Object.entries(devices);
 
   return (
-    <Paper className={classes.root}>
+    <Paper elevation={5} className={classes.root}>
       <Grid container>
         <Grid item container direction="column" xs={6}>
           <Grid item className={classes.name}>

@@ -10,9 +10,18 @@ const Company = () => {
   const { sites } = data;
   const theme = useTheme();
   const useStyles = makeStyles({
-    name: { fontSize: "1.5rem", margin: ".5rem" },
+    name: {
+      color: theme.palette.text.primary,
+      fontSize: "2rem",
+      fontWeight: "700",
+      margin: ".5rem",
+    },
     root: { backgroundColor: theme.palette.info.contrastText },
-    siteHeading: { fontSize: "1.5rem", margin: ".5rem" },
+    siteHeading: {
+      color: theme.palette.text.primary,
+      fontSize: "1.5rem",
+      margin: ".5rem",
+    },
   });
   const classes = useStyles();
 

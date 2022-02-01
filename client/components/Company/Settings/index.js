@@ -36,7 +36,14 @@ const Settings = (props) => {
       fontSize: ".75rem",
     },
     revenueShareSlider: { width: 250 },
-    root: { width: "33vw", margin: 10, padding: ".5rem" },
+    root: {
+      borderRadius: 12,
+      boxShadow:
+        "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
+      width: "33vw",
+      margin: 10,
+      padding: ".5rem",
+    },
     testPublisher: { margin: ".5rem" },
     timezoneContain: { margin: ".5rem" },
   });
@@ -58,7 +65,7 @@ const Settings = (props) => {
   };
 
   return (
-    <Paper className={classes.root}>
+    <Paper elevation={5} className={classes.root}>
       <FormControlLabel
         className={classes.enabled}
         control={
