@@ -17,7 +17,6 @@ import Site from "./SiteRow";
 import SiteDetail from "./SiteDetail";
 
 const AllSites = ({ sites }) => {
-  const [currSiteId, setCurrSiteId] = useState(null);
   const [currSite, setCurrSite] = useState({});
 
   const theme = useTheme();
@@ -63,28 +62,34 @@ const AllSites = ({ sites }) => {
   }, [currSite]);
 
   return (
-    <div>
-      <div className={classes.root}>
-        <Typography className={classes.sitesHeading} variant="h2">
-          Sites
-        </Typography>
+    <Grid container>
+      <Grid item xs={6}>
+        <div className={classes.root}>
+          <Typography className={classes.sitesHeading} variant="h2">
+            Sites
+          </Typography>
 
-        <TableRow className={classes.headRow} elevation={0}>
-          <TableCell className={`${classes.cell} ${classes.name}`}>
-            Name
-          </TableCell>
-          <TableCell className={`${classes.cell} ${classes.id}`}>ID</TableCell>
-          <TableCell className={classes.cell}>URL</TableCell>
-          <TableCell className={`${classes.cell} ${classes.enabled}`}>
-            Enabled
-          </TableCell>
-        </TableRow>
-        {sites.map((site) => {
-          return <Site key={site.id} func={getCurrSite} site={site} />;
-        })}
-      </div>
-      <SiteDetail site={currSite} />
-    </div>
+          <TableRow className={classes.headRow} elevation={0}>
+            <TableCell className={`${classes.cell} ${classes.name}`}>
+              Name
+            </TableCell>
+            <TableCell className={`${classes.cell} ${classes.id}`}>
+              ID
+            </TableCell>
+            <TableCell className={classes.cell}>URL</TableCell>
+            <TableCell className={`${classes.cell} ${classes.enabled}`}>
+              Enabled
+            </TableCell>
+          </TableRow>
+          {sites.map((site) => {
+            return <Site key={site.id} func={getCurrSite} site={site} />;
+          })}
+        </div>
+      </Grid>
+      <Grid item xs={6}>
+        {currSite.id ? <SiteDetail site={currSite} /> : ""}
+      </Grid>
+    </Grid>
   );
 };
 

@@ -5,12 +5,13 @@ import data from "../../../data.json";
 import Settings from "./Settings";
 
 import AllSites from "./AllSites";
-import { Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 
 const Company = () => {
   const { sites } = data;
   const theme = useTheme();
   const useStyles = makeStyles({
+    contain: {},
     name: {
       color: theme.palette.text.primary,
       fontSize: "2rem",
@@ -31,9 +32,19 @@ const Company = () => {
       <Typography className={classes.name} variant="h2">
         {data.name}
       </Typography>
-      <Settings data={data} />
-      <AllSites sites={sites} />
-      {/* <SiteDetail currSite={currSite} /> */}
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        className={classes.contain}
+      >
+        <Grid item>
+          <Settings data={data} />
+        </Grid>
+        <Grid item>
+          <AllSites sites={sites} />
+        </Grid>
+      </Grid>
     </div>
   );
 };
