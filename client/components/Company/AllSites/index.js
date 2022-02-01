@@ -34,7 +34,7 @@ const AllSites = ({ sites }) => {
     name: {
       width: 200,
     },
-    root: {},
+    root: { width: "76vw" },
     sitesHeading: {
       color: theme.palette.text.primary,
       fontSize: "1.5rem",
@@ -62,9 +62,9 @@ const AllSites = ({ sites }) => {
   }, [currSite]);
 
   return (
-    <Grid container>
+    <Grid className={classes.root} container justifyContent="space-between">
       <Grid item xs={6}>
-        <div className={classes.root}>
+        <div>
           <Typography className={classes.sitesHeading} variant="h2">
             Sites
           </Typography>
@@ -87,7 +87,11 @@ const AllSites = ({ sites }) => {
         </div>
       </Grid>
       <Grid item xs={6}>
-        {currSite.id ? <SiteDetail site={currSite} /> : ""}
+        {currSite.id ? (
+          <SiteDetail site={currSite} />
+        ) : (
+          <SiteDetail site={{}} />
+        )}
       </Grid>
     </Grid>
   );

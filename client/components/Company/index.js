@@ -11,6 +11,7 @@ const Company = () => {
   const { sites } = data;
   const theme = useTheme();
   const useStyles = makeStyles({
+    allSites: {},
     contain: {},
     name: {
       color: theme.palette.text.primary,
@@ -29,9 +30,6 @@ const Company = () => {
 
   return (
     <div className={classes.root}>
-      <Typography className={classes.name} variant="h2">
-        {data.name}
-      </Typography>
       <Grid
         container
         direction="column"
@@ -39,10 +37,15 @@ const Company = () => {
         className={classes.contain}
       >
         <Grid item>
+          <Typography className={classes.name} variant="h2">
+            {data.name}
+          </Typography>
+        </Grid>
+        <Grid item>
           <Settings data={data} />
         </Grid>
         <Grid item>
-          <AllSites sites={sites} />
+          <AllSites classes={classes.allSites} sites={sites} />
         </Grid>
       </Grid>
     </div>
