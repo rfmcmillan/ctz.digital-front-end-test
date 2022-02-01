@@ -21,16 +21,20 @@ function capitalizeDeviceType(deviceType) {
   return capitalized + deviceType.slice(1);
 }
 
-const Site = ({ site }) => {
-  const { activeProducts } = site;
-  const [currSite, setCurrSite] = useState();
+const SiteRow = (props) => {
+  const {
+    site,
+    site: { activeProducts },
+  } = props;
+
   const theme = useTheme();
 
   const useStyles = makeStyles({
+    button: { marginTop: ".25em" },
     delaySlider: { margin: ".5rem" },
-    cell: { border: "0px" },
-    enabled: { margin: ".5rem" },
-    id: { margin: ".5rem" },
+    cell: { border: "0px", width: 200, textAlign: "center" },
+    enabled: { width: 100 },
+    id: { width: 100 },
     list: {
       margin: "1rem",
       minHeight: 250,
@@ -43,6 +47,7 @@ const Site = ({ site }) => {
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
       margin: "10px 0px 10px 0px",
+      maxWidth: 780,
     },
     scriptDelay: { width: 250 },
     url: { margin: ".5rem" },
@@ -51,12 +56,9 @@ const Site = ({ site }) => {
 
   const handleClick = (event) => {
     console.log(event.currentTarget.value);
-    setCurrSite(event.currentTarget.value);
+    // setCurrSite(event.currentTarget.value);
+    props.func(site.id);
   };
-
-  useEffect(() => {
-    console.log("currSite:", currSite);
-  }, [currSite]);
 
   const devices = {};
 
@@ -86,18 +88,17 @@ const Site = ({ site }) => {
           {site.name || site.displayName}
         </TableCell>
 
-        <TableCell className={classes.cell}>{site.id}</TableCell>
+        <TableCell className={`${classes.cell} ${classes.id}`}>
+          {site.id}
+        </TableCell>
 
         <TableCell className={classes.cell}>{site.domain}</TableCell>
 
-        <TableCell className={classes.cell}>
+        <TableCell className={`${classes.cell} ${classes.enabled}`}>
           {site.enabled ? "Yes" : "No"}
         </TableCell>
         <Typography className={classes.button}>
-          <IconButton
-            value={site.name || site.displayName}
-            onClick={handleClick}
-          >
+          <IconButton value={site.id} onClick={handleClick}>
             <ChevronRightIcon fontSize="small" color="inherit" />
           </IconButton>
         </Typography>
@@ -106,4 +107,4 @@ const Site = ({ site }) => {
   );
 };
 
-export default Site;
+export default SiteRow;

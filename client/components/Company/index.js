@@ -5,7 +5,7 @@ import data from "../../../data.json";
 import Settings from "./Settings";
 
 import AllSites from "./AllSites";
-import { Grid, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 
 const Company = () => {
   const { sites } = data;
@@ -33,6 +33,7 @@ const Company = () => {
       </Typography>
       <Settings data={data} />
       <AllSites sites={sites} />
+      {/* <SiteDetail currSite={currSite} /> */}
     </div>
   );
 };

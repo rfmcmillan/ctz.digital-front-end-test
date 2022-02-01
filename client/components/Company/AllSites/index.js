@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormControl,
   FormLabel,
@@ -13,29 +13,29 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Site from "./Site";
+import Site from "./SiteRow";
+import SiteDetail from "./SiteDetail";
 
 const AllSites = ({ sites }) => {
-  console.log("🚀 ~ file: index.js ~ line 19 ~ AllSites ~ sites", sites);
+  const [currSiteId, setCurrSiteId] = useState(null);
+  const [currSite, setCurrSite] = useState({});
 
   const theme = useTheme();
-
   const useStyles = makeStyles({
     cell: {
+      border: "0px",
       color: theme.palette.text.secondary,
       fontWeight: 500,
+      textAlign: "center",
+      width: 200,
     },
+    enabled: { width: 100 },
+    headRow: {},
+    id: { width: 100 },
     name: {
       width: 200,
     },
-    root: {
-      borderRadius: 12,
-      boxShadow:
-        "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
-      width: "33vw",
-      margin: 10,
-      padding: ".5rem",
-    },
+    root: {},
     sitesHeading: {
       color: theme.palette.text.primary,
       fontSize: "1.5rem",
@@ -45,34 +45,45 @@ const AllSites = ({ sites }) => {
   });
   const classes = useStyles();
 
+  const getCurrSite = (data) => {
+    if (data) {
+      console.log("inParent:", parseInt(data));
+      const currSiteId = parseInt(data);
+      const found = sites.find((site) => site.id === currSiteId);
+      console.log(
+        "🚀 ~ file: index.js ~ line 57 ~ useEffect ~ filtered",
+        found
+      );
+      setCurrSite(found);
+    } // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
+  };
+
+  useEffect(() => {
+    console.log("in useEffect", currSite);
+  }, [currSite]);
+
   return (
     <div>
-      <Typography className={classes.sitesHeading} variant="h2">
-        Sites
-      </Typography>
+      <div className={classes.root}>
+        <Typography className={classes.sitesHeading} variant="h2">
+          Sites
+        </Typography>
 
-      <TableRow
-        sx={{
-          display: {
-            xs: "none",
-            md: "flex",
-          },
-          padding: "0px 18px",
-          mb: "-0.125rem",
-          bgcolor: "transparent",
-        }}
-        elevation={0}
-      >
-        <TableCell className={`${classes.cell} ${classes.name}`}>
-          Name
-        </TableCell>
-        <TableCell className={classes.cell}>ID</TableCell>
-        <TableCell className={classes.cell}>URL</TableCell>
-        <TableCell className={classes.cell}>Enabled</TableCell>
-      </TableRow>
-      {sites.map((site) => {
-        return <Site site={site} />;
-      })}
+        <TableRow className={classes.headRow} elevation={0}>
+          <TableCell className={`${classes.cell} ${classes.name}`}>
+            Name
+          </TableCell>
+          <TableCell className={`${classes.cell} ${classes.id}`}>ID</TableCell>
+          <TableCell className={classes.cell}>URL</TableCell>
+          <TableCell className={`${classes.cell} ${classes.enabled}`}>
+            Enabled
+          </TableCell>
+        </TableRow>
+        {sites.map((site) => {
+          return <Site key={site.id} func={getCurrSite} site={site} />;
+        })}
+      </div>
+      <SiteDetail site={currSite} />
     </div>
   );
 };
