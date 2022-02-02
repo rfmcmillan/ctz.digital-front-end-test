@@ -37,14 +37,14 @@ const SiteRow = (props) => {
   const useStyles = makeStyles({
     button: { marginTop: ".25em" },
     delaySlider: { margin: ".5rem" },
-    cell: { border: "0px", width: 200, textAlign: "center" },
+    cell: { border: "0px", textAlign: "left" },
     enabled: { width: 100 },
-    id: { width: 100 },
+    id: { textAlign: "left", minWidth: 50 },
     list: {
       margin: "1rem",
       minHeight: 250,
     },
-    name: { margin: ".5rem" },
+    name: { textAlign: "left", minWidth: 150 },
     root: {
       backgroundColor: "white",
       borderRadius: 12,
@@ -62,7 +62,7 @@ const SiteRow = (props) => {
       maxWidth: 780,
     },
     scriptDelay: { width: 250 },
-    url: { margin: ".5rem" },
+    url: { margin: ".5rem", minWidth: 200 },
   });
   const classes = useStyles();
 
@@ -98,7 +98,7 @@ const SiteRow = (props) => {
       className={currSite.id === site.id ? classes.rootCurr : classes.root}
     >
       <TableRow elevation={5}>
-        <TableCell className={classes.cell}>
+        <TableCell className={`${classes.cell} ${classes.name}`}>
           {site.name || site.displayName}
         </TableCell>
 
@@ -106,7 +106,9 @@ const SiteRow = (props) => {
           {site.id}
         </TableCell>
 
-        <TableCell className={classes.cell}>{site.domain}</TableCell>
+        <TableCell className={`${classes.cell} ${classes.url}`}>
+          {site.domain}
+        </TableCell>
 
         <TableCell className={`${classes.cell} ${classes.enabled}`}>
           {site.enabled ? (

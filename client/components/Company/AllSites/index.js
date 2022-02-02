@@ -25,14 +25,15 @@ const AllSites = ({ sites }) => {
       border: "0px",
       color: theme.palette.text.secondary,
       fontWeight: 500,
-      textAlign: "center",
-      width: 200,
+      textAlign: "left",
     },
     enabled: { width: 100 },
     headRow: {},
-    id: { width: 100 },
+    id: { textAlign: "left", minWidth: 50 },
     name: {
-      width: 200,
+      textAlign: "left",
+
+      minWidth: 150,
     },
     root: { width: "76.5vw" },
     sitesHeading: {
@@ -42,20 +43,16 @@ const AllSites = ({ sites }) => {
       margin: ".5rem",
     },
     table: {},
+    url: { textAlign: "left", minWidth: 200 },
   });
   const classes = useStyles();
 
   const getCurrSite = (data) => {
     if (data) {
-      console.log("inParent:", parseInt(data));
       const currSiteId = parseInt(data);
       const found = sites.find((site) => site.id === currSiteId);
-      console.log(
-        "🚀 ~ file: index.js ~ line 57 ~ useEffect ~ filtered",
-        found
-      );
       setCurrSite(found);
-    } // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
+    }
   };
 
   useEffect(() => {
@@ -83,10 +80,13 @@ const AllSites = ({ sites }) => {
             <TableCell className={`${classes.cell} ${classes.id}`}>
               ID
             </TableCell>
-            <TableCell className={classes.cell}>URL</TableCell>
+            <TableCell className={`${classes.cell} ${classes.url}`}>
+              URL
+            </TableCell>
             <TableCell className={`${classes.cell} ${classes.enabled}`}>
               Enabled
             </TableCell>
+            <TableCell className={`${classes.cell} `}></TableCell>
           </TableRow>
           {sites.map((site) => {
             return (

@@ -20,10 +20,11 @@ const Company = () => {
       margin: ".5rem",
     },
     root: { backgroundColor: theme.palette.info.contrastText },
-    siteHeading: {
+    settingsHeading: {
       color: theme.palette.text.primary,
       fontSize: "1.5rem",
-      margin: ".5rem",
+      fontWeight: "700",
+      margin: ".5rem .5rem .5rem 1rem",
     },
   });
   const classes = useStyles();
@@ -43,6 +44,9 @@ const Company = () => {
           </Typography>
         </Grid>
         <Grid item>
+          <Typography className={classes.settingsHeading} variant="h2">
+            Settings
+          </Typography>
           <Settings data={data} />
         </Grid>
         <Grid item>
