@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  Box,
   FormControl,
   FormLabel,
   FormControlLabel,
@@ -60,46 +61,43 @@ const AllSites = ({ sites }) => {
   }, [currSite]);
 
   return (
-    <Grid
+    <Box
       className={classes.root}
-      container
-      direction="row"
+      display="flex"
       justifyContent="space-between"
+      flexDirection="row"
       spacing={2}
     >
-      <Grid className={classes.table} item xs={6}>
-        <div>
-          <Typography className={classes.sitesHeading} variant="h2">
-            Sites
-          </Typography>
+      <div>
+        <Typography className={classes.sitesHeading} variant="h2">
+          Sites
+        </Typography>
 
-          <TableRow className={classes.headRow} elevation={0}>
-            <TableCell className={`${classes.cell} ${classes.name}`}>
-              Name
-            </TableCell>
-            <TableCell className={`${classes.cell} ${classes.id}`}>
-              ID
-            </TableCell>
-            <TableCell className={`${classes.cell} ${classes.url}`}>
-              URL
-            </TableCell>
-            <TableCell className={`${classes.cell} ${classes.enabled}`}>
-              Enabled
-            </TableCell>
-            <TableCell className={`${classes.cell} `}></TableCell>
-          </TableRow>
-          {sites.map((site) => {
-            return (
-              <SiteRow
-                currSite={currSite}
-                key={site.id}
-                func={getCurrSite}
-                site={site}
-              />
-            );
-          })}
-        </div>
-      </Grid>
+        <TableRow className={classes.headRow} elevation={0}>
+          <TableCell className={`${classes.cell} ${classes.name}`}>
+            Name
+          </TableCell>
+          <TableCell className={`${classes.cell} ${classes.id}`}>ID</TableCell>
+          <TableCell className={`${classes.cell} ${classes.url}`}>
+            URL
+          </TableCell>
+          <TableCell className={`${classes.cell} ${classes.enabled}`}>
+            Enabled
+          </TableCell>
+          <TableCell className={`${classes.cell} `}></TableCell>
+        </TableRow>
+        {sites.map((site) => {
+          return (
+            <SiteRow
+              currSite={currSite}
+              key={site.id}
+              func={getCurrSite}
+              site={site}
+            />
+          );
+        })}
+      </div>
+
       <Grid item xs={6}>
         {currSite.id ? (
           <SiteDetail site={currSite} />
@@ -107,7 +105,7 @@ const AllSites = ({ sites }) => {
           <SiteDetail site={{}} />
         )}
       </Grid>
-    </Grid>
+    </Box>
   );
 };
 

@@ -23,6 +23,13 @@ const SiteDetail = (props) => {
   const theme = useTheme();
 
   const useStyles = makeStyles({
+    contain: {
+      borderRadius: 12,
+      boxShadow:
+        "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
+
+      padding: ".75rem",
+    },
     delaySlider: { margin: ".5rem" },
     enabled: { margin: ".5rem" },
     id: { margin: ".5rem" },
@@ -31,13 +38,7 @@ const SiteDetail = (props) => {
       minHeight: 250,
     },
     name: { margin: ".5rem" },
-    root: {
-      borderRadius: 12,
-      boxShadow:
-        "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
-
-      padding: ".75rem",
-    },
+    root: { margin: "1rem" },
     scriptDelay: { width: 250 },
     sitesHeading: {
       color: theme.palette.text.primary,
@@ -71,11 +72,11 @@ const SiteDetail = (props) => {
   const devicesArray = Object.entries(devices);
 
   return (
-    <div>
+    <div className={classes.root}>
       <Typography className={classes.sitesHeading} variant="h2">
         Site Detail
       </Typography>
-      <Paper elevation={5} className={classes.root}>
+      <Paper elevation={5} className={classes.contain}>
         <Grid container>
           <Grid item container direction="column" xs={6}>
             <Grid item className={classes.name}>
