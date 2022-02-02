@@ -35,7 +35,7 @@ const SiteRow = (props) => {
   const theme = useTheme();
 
   const useStyles = makeStyles({
-    button: { marginTop: ".25em" },
+    button: { marginTop: ".35em" },
     delaySlider: { margin: ".5rem" },
     cell: { border: "0px", textAlign: "left" },
     enabled: { width: 100 },
@@ -44,25 +44,26 @@ const SiteRow = (props) => {
       margin: "1rem",
       minHeight: 250,
     },
-    name: { textAlign: "left", minWidth: 150 },
+    name: { textAlign: "left", minWidth: 135 },
     root: {
       backgroundColor: "white",
       borderRadius: 12,
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
-      margin: "10px 0px 10px 0px",
-      maxWidth: 780,
+      margin: "16px 0px 16px 0px",
+      width: 700,
     },
     rootCurr: {
       backgroundColor: theme.palette.secondary.main,
       borderRadius: 12,
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
-      margin: "10px 0px 10px 0px",
-      maxWidth: 780,
+      margin: "16px 0px 16px 0px",
+
+      width: 700,
     },
     scriptDelay: { width: 250 },
-    url: { margin: ".5rem", minWidth: 200 },
+    url: { margin: ".5rem", minWidth: 180 },
   });
   const classes = useStyles();
 
@@ -122,11 +123,13 @@ const SiteRow = (props) => {
             <Chip size="small" label="Disabled" />
           )}
         </TableCell>
+        {/* <TableCell className={`${classes.cell} `}> */}
         <Typography className={classes.button}>
           <IconButton value={site.id} onClick={handleClick}>
             <ChevronRightIcon fontSize="small" color="inherit" />
           </IconButton>
         </Typography>
+        {/* </TableCell> */}
       </TableRow>
     </Paper>
   );

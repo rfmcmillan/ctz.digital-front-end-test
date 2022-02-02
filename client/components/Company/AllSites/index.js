@@ -33,7 +33,7 @@ const AllSites = ({ sites }) => {
     name: {
       textAlign: "left",
 
-      minWidth: 150,
+      minWidth: 135,
     },
     root: { width: "76.5vw" },
     sitesHeading: {
@@ -43,7 +43,7 @@ const AllSites = ({ sites }) => {
       margin: ".5rem",
     },
     table: {},
-    url: { textAlign: "left", minWidth: 200 },
+    url: { textAlign: "left", minWidth: 180 },
   });
   const classes = useStyles();
 
