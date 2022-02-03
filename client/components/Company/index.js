@@ -5,7 +5,7 @@ import data from "../../../data.json";
 import Settings from "./Settings";
 
 import AllSites from "./AllSites";
-import { Grid, Typography, useMediaQuery } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 
 const Company = () => {
   const { sites } = data;
