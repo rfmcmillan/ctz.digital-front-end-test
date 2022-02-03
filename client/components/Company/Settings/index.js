@@ -30,9 +30,9 @@ const Settings = (props) => {
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const useStyles = makeStyles({
-    accountType: { margin: ".5rem" },
+    accountType: { margin: ".4rem .5rem .5rem .5rem" },
     accountTypeLabel: { fontSize: ".75rem" },
-    enabled: { margin: "1rem 0rem 0rem 0rem" },
+    enabled: { margin: ".5rem 0rem 0rem 0rem" },
     revenueShareContain: { margin: ".5rem" },
     revenueShareLabel: {
       fontSize: ".75rem",
@@ -48,10 +48,10 @@ const Settings = (props) => {
         width: "90vw",
       },
     },
-    testPublisher: { marginTop: "1rem" },
+    testPublisher: { marginTop: ".5rem" },
     timezone: { margin: "0rem 0rem 1rem 0rem" },
-    timezoneContain: { margin: ".5rem .5rem .5rem 1rem" },
-    timezoneLabel: { marginBottom: ".25rem", marginTop: ".5rem" },
+    timezoneContain: { margin: "0rem .5rem .5rem 1rem" },
+    timezoneLabel: { marginBottom: ".15rem", marginTop: ".5rem" },
   });
   const classes = useStyles();
 

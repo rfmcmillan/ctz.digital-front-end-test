@@ -14,7 +14,7 @@ const RevenueShareSlider = (props) => {
   const { publisherShare } = props;
 
   const useStyles = makeStyles({
-    revenueShareContain: { margin: ".5rem" },
+    revenueShareContain: { margin: "1.1rem .5rem .5rem .5rem" },
     revenueShareLabel: {
       fontSize: ".75rem",
     },
