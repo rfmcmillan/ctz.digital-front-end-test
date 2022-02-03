@@ -1,18 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  FormControl,
-  FormLabel,
-  FormControlLabel,
-  Grid,
-  Paper,
-  Radio,
-  RadioGroup,
-  Switch,
-  TableRow,
-  TableCell,
-  Typography,
-} from "@material-ui/core";
+import { Box, Grid, TableRow, TableCell, Typography } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import SiteRow from "./SiteRow";
 import SiteDetail from "./SiteDetail";
