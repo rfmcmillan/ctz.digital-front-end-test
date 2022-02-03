@@ -66,7 +66,7 @@ const ScriptDelaySlider = (props) => {
           gutterBottom
           variant="caption"
         >
-          Script Delay
+          Script Load Delay
         </Typography>
       </Grid>
       <Grid item>
