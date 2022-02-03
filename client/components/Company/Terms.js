@@ -8,35 +8,25 @@ const Terms = () => {
   const theme = useTheme();
 
   const useStyles = makeStyles({
+    choose: { fontSize: "1rem" },
+    h2: { fontSize: "1.25rem" },
     root: {
       borderRadius: 12,
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
-      width: "75vw",
-      [theme.breakpoints.down("lg")]: {
-        width: "90vw",
-      },
+      width: "33vw",
     },
   });
   const classes = useStyles();
 
   const onFileChange = (event) => {
-    // Update the state
-    setSelectedFile({ selectedFile: event.target.files[0] });
+    setSelectedFile(event.target.files[0]);
   };
 
   const onFileUpload = () => {
-    // Create an object of formData
     const formData = new FormData();
-
-    // Update the formData object
     formData.append("myFile", selectedFile, selectedFile.name);
-
-    // Details of the uploaded file
     console.log(selectedFile);
-
-    // Request made to the backend api
-    // Send formData object
     // axios.post("api/uploadfile", formData);
   };
 
@@ -44,20 +34,30 @@ const Terms = () => {
     if (selectedFile) {
       return (
         <div>
-          <h2>File Details:</h2>
+          <Typography variant="h2" className={classes.h2}>
+            File Details:
+          </Typography>
 
-          <p>File Name: {selectedFile.name}</p>
+          <Typography variant="body1">
+            File Name: {selectedFile.name}
+          </Typography>
 
-          <p>File Type: {selectedFile.type}</p>
+          <Typography variant="body1">
+            File Type: {selectedFile.type}
+          </Typography>
 
-          <p>Last Modified: {selectedFile.lastModifiedDate.toDateString()}</p>
+          <Typography variant="body1">
+            Last Modified: {selectedFile.lastModifiedDate.toDateString()}
+          </Typography>
         </div>
       );
     } else {
       return (
         <div>
           <br />
-          <h4>Choose before Pressing the Upload button</h4>
+          <Typography className={classes.choose} variant="h4">
+            Choose before Pressing the Upload button
+          </Typography>
         </div>
       );
     }
