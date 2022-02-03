@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { PropTypes } from "prop-types";
 import { Box, Grid, TableRow, TableCell, Typography } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import SiteRow from "./SiteRow";
@@ -97,6 +98,10 @@ const AllSites = ({ sites }) => {
       </Grid>
     </Box>
   );
+};
+
+AllSites.propTypes = {
+  sites: PropTypes.array,
 };
 
 export default AllSites;

@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import {
   Chip,
   IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  ListSubheader,
-  Grid,
   Paper,
   TableCell,
   TableRow,
@@ -81,8 +77,6 @@ const SiteRow = (props) => {
     }
   }
 
-  const devicesArray = Object.entries(devices);
-
   return (
     <Paper
       className={currSite.id === site.id ? classes.rootCurr : classes.root}
@@ -124,6 +118,12 @@ const SiteRow = (props) => {
       </TableRow>
     </Paper>
   );
+};
+
+SiteRow.propTypes = {
+  currSite: PropTypes.object,
+  site: PropTypes.object,
+  func: PropTypes.func,
 };
 
 export default SiteRow;

@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import {
   Box,
   Chip,
@@ -20,9 +21,6 @@ import ScriptDelaySlider from "./ScriptDelaySlider";
 import DoneIcon from "@material-ui/icons/Done";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import Icon from "@material-ui/core/Icon";
-import DesktopWindowsRoundedIcon from "@material-ui/icons/DesktopWindowsRounded";
-import LaptopRoundedIcon from "@material-ui/icons/LaptopRounded";
-import StayPrimaryPortraitRoundedIcon from "@material-ui/icons/StayPrimaryPortraitRounded";
 import ProductIcon from "./ProductIcon";
 
 function capitalizeDeviceType(deviceType) {
@@ -210,6 +208,10 @@ const SiteDetail = (props) => {
       </div>
     );
   }
+};
+
+SiteDetail.propTypes = {
+  site: PropTypes.object,
 };
 
 export default SiteDetail;

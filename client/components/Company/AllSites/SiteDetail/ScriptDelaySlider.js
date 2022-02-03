@@ -1,6 +1,7 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import { Grid, Slider, Typography } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 function valuetext(value) {
   return `${value} milliseconds`;
@@ -85,6 +86,10 @@ const ScriptDelaySlider = (props) => {
       </Grid>
     </Grid>
   );
+};
+
+ScriptDelaySlider.propTypes = {
+  scriptDelay: PropTypes.number,
 };
 
 export default ScriptDelaySlider;

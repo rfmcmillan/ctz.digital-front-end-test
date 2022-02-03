@@ -1,6 +1,6 @@
 import React from "react";
-import { Grid, Slider, Typography } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { PropTypes } from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 import DesktopWindowsRoundedIcon from "@material-ui/icons/DesktopWindowsRounded";
 import TabletMacIcon from "@material-ui/icons/TabletMac";
@@ -31,6 +31,10 @@ const ProductIcon = ({ device }) => {
       </Icon>
     );
   }
+};
+
+ProductIcon.propTypes = {
+  device: PropTypes.string,
 };
 
 export default ProductIcon;
