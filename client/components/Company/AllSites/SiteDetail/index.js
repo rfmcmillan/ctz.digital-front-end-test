@@ -55,6 +55,8 @@ const SiteDetail = (props) => {
     },
     name: { margin: ".5rem" },
     root: { margin: "1rem" },
+    placeHolder: { minHeight: 489 },
+    placeHolderText: { color: "#c4c4c4", fontWeight: 800, marginTop: 225 },
     products: { marginTop: "2rem" },
     scriptDelay: { width: 250 },
     sitesHeading: {
@@ -88,104 +90,127 @@ const SiteDetail = (props) => {
 
   const devicesArray = Object.entries(devices);
 
-  return (
-    <div className={classes.root}>
-      <Typography className={classes.sitesHeading} variant="h2">
-        Site Detail
-      </Typography>
-      <Paper elevation={5} className={classes.contain}>
-        <Grid container direction="column" alignItems="center">
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>ID</TableCell>
-                <TableCell> URL</TableCell>
-                <TableCell> Enabled</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableCell>
-                  {" "}
-                  {site.name ? site.name : site.displayName}
-                </TableCell>
-                <TableCell> {site.id}</TableCell>
-                <TableCell> {site.domain}</TableCell>
-                <TableCell>
-                  {" "}
-                  {site.enabled ? (
-                    <Chip
-                      icon={<DoneIcon />}
-                      size="small"
-                      label="Enabled"
-                      color="secondary"
-                    />
-                  ) : (
-                    <Chip size="small" label="Disabled" />
-                  )}
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-          <Grid item>
-            <Typography className={classes.products} align="center">
-              Active Products
-            </Typography>
-            <Grid container justifyContent="space-around">
-              {devicesArray.map((device) => {
-                return (
-                  <Grid key={device[0]} item xs={4}>
-                    <List
-                      className={classes.list}
-                      dense={true}
-                      key={device[0]}
-                      subheader={
-                        <ListSubheader>
-                          <ProductIcon device={device[0]} />
+  if (site.id) {
+    return (
+      <div className={classes.root}>
+        <Typography className={classes.sitesHeading} variant="h2">
+          Site Details
+        </Typography>
+        <Paper elevation={5} className={classes.contain}>
+          <Grid container direction="column" alignItems="center">
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Name</TableCell>
+                  <TableCell>ID</TableCell>
+                  <TableCell> URL</TableCell>
+                  <TableCell> Enabled</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell>
+                    {" "}
+                    {site.name ? site.name : site.displayName}
+                  </TableCell>
+                  <TableCell> {site.id}</TableCell>
+                  <TableCell> {site.domain}</TableCell>
+                  <TableCell>
+                    {" "}
+                    {site.enabled ? (
+                      <Chip
+                        icon={<DoneIcon />}
+                        size="small"
+                        label="Enabled"
+                        color="secondary"
+                      />
+                    ) : (
+                      <Chip size="small" label="Disabled" />
+                    )}
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+            <Grid item>
+              <Typography className={classes.products} align="center">
+                Active Products
+              </Typography>
+              <Grid container justifyContent="space-around">
+                {devicesArray.map((device) => {
+                  return (
+                    <Grid key={device[0]} item xs={4}>
+                      <List
+                        className={classes.list}
+                        dense={true}
+                        key={device[0]}
+                        subheader={
+                          <ListSubheader>
+                            <ProductIcon device={device[0]} />
 
-                          {capitalizeDeviceType(device[0])}
-                        </ListSubheader>
-                      }
-                    >
-                      {device[1].products.map((product) => {
-                        return (
-                          <ListItem key={product.type}>
-                            {product.enabled ? (
-                              <Icon
-                                className={classes.icon}
-                                title="Enabled"
-                                color="secondary"
-                              >
-                                <DoneIcon />
-                              </Icon>
-                            ) : (
-                              <Icon className={classes.icon} title="Enabled">
-                                <CloseRoundedIcon />
-                              </Icon>
-                            )}
-                            <Box>
-                              <ListItemText primary={product.type} />
-                            </Box>
-                          </ListItem>
-                        );
-                      })}
-                    </List>
-                  </Grid>
-                );
-              })}
+                            {capitalizeDeviceType(device[0])}
+                          </ListSubheader>
+                        }
+                      >
+                        {device[1].products.map((product) => {
+                          return (
+                            <ListItem key={product.type}>
+                              {product.enabled ? (
+                                <Icon
+                                  className={classes.icon}
+                                  title="Enabled"
+                                  color="secondary"
+                                >
+                                  <DoneIcon />
+                                </Icon>
+                              ) : (
+                                <Icon className={classes.icon} title="Enabled">
+                                  <CloseRoundedIcon />
+                                </Icon>
+                              )}
+                              <Box>
+                                <ListItemText primary={product.type} />
+                              </Box>
+                            </ListItem>
+                          );
+                        })}
+                      </List>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </Grid>
+            <Grid item>
+              <ScriptDelaySlider
+                className={classes.delaySlider}
+                scriptDelay={site.scriptDelay}
+              />
             </Grid>
           </Grid>
-          <Grid item>
-            <ScriptDelaySlider
-              className={classes.delaySlider}
-              scriptDelay={site.scriptDelay}
-            />
-          </Grid>
-        </Grid>
-      </Paper>
-    </div>
-  );
+        </Paper>
+      </div>
+    );
+  } else {
+    return (
+      <div className={classes.root}>
+        <Typography className={classes.sitesHeading} variant="h2">
+          Site Details
+        </Typography>
+        <Paper
+          elevation={5}
+          className={`${classes.contain} ${classes.placeHolder}`}
+        >
+          <Typography
+            align="center"
+            className={classes.placeHolderText}
+            color="textSecondary"
+          >
+            Please select a site from the left to see additional details and
+            settings
+          </Typography>
+        </Paper>
+      </div>
+    );
+  }
 };
 
 export default SiteDetail;

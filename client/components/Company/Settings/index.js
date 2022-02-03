@@ -9,6 +9,7 @@ import {
   RadioGroup,
   Switch,
   Typography,
+  useMediaQuery,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import RevenueShareSlider from "./RevenueShareSlider";
@@ -26,6 +27,7 @@ const Settings = (props) => {
   const [accountType, setAccountType] = useState(general.accountType);
 
   const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const useStyles = makeStyles({
     accountType: { margin: ".5rem" },
@@ -43,6 +45,9 @@ const Settings = (props) => {
       width: "75vw",
       margin: 10,
       padding: ".5rem",
+      [theme.breakpoints.down("lg")]: {
+        width: "90vw",
+      },
     },
     testPublisher: { marginTop: "1rem" },
     timezone: { margin: "0rem 0rem 1rem 0rem" },

@@ -36,7 +36,12 @@ const AllSites = ({ sites }) => {
 
       minWidth: 135,
     },
-    root: { width: "76.5vw" },
+    root: {
+      width: "76.5vw",
+      [theme.breakpoints.down("lg")]: {
+        width: "90vw",
+      },
+    },
     sitesHeading: {
       color: theme.palette.text.primary,
       fontSize: "1.5rem",

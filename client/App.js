@@ -4,6 +4,15 @@ import Nav from "./components/Nav";
 import Company from "./components/Company";
 
 const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 330,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
   palette: {
     primary: {
       main: "#1E9AAA",
