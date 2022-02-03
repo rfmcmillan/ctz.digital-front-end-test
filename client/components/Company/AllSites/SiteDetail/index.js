@@ -9,6 +9,11 @@ import {
   ListSubheader,
   Grid,
   Paper,
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
   Typography,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -90,38 +95,39 @@ const SiteDetail = (props) => {
       </Typography>
       <Paper elevation={5} className={classes.contain}>
         <Grid container direction="column" alignItems="center">
-          <Grid item container>
-            <Grid item container direction="column" xs={6}>
-              <Grid item className={classes.name}>
-                <Typography variant="caption" color="textSecondary">
-                  Name
-                </Typography>
-                <Typography>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell>ID</TableCell>
+                <TableCell> URL</TableCell>
+                <TableCell> Enabled</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell>
+                  {" "}
                   {site.name ? site.name : site.displayName}
-                </Typography>
-              </Grid>
-              <Grid className={classes.id} item>
-                <Typography variant="caption" color="textSecondary">
-                  ID
-                </Typography>
-                <Typography>{site.id}</Typography>
-              </Grid>
-            </Grid>
-            <Grid item container xs={6} direction="column">
-              <Grid className={classes.url} item>
-                <Typography variant="caption" color="textSecondary">
-                  Site URL
-                </Typography>
-                <Typography>{site.domain}</Typography>
-              </Grid>
-              <Grid item className={classes.enabled}>
-                <Typography variant="caption" color="textSecondary">
-                  Enabled
-                </Typography>
-                <Typography>{site.enabled ? "Yes" : "No"}</Typography>
-              </Grid>
-            </Grid>
-          </Grid>
+                </TableCell>
+                <TableCell> {site.id}</TableCell>
+                <TableCell> {site.domain}</TableCell>
+                <TableCell>
+                  {" "}
+                  {site.enabled ? (
+                    <Chip
+                      icon={<DoneIcon />}
+                      size="small"
+                      label="Enabled"
+                      color="secondary"
+                    />
+                  ) : (
+                    <Chip size="small" label="Disabled" />
+                  )}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
           <Grid item>
             <Typography className={classes.products} align="center">
               Active Products
