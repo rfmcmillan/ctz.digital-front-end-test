@@ -180,6 +180,7 @@ const SiteDetail = (props) => {
               <ScriptDelaySlider
                 className={classes.delaySlider}
                 scriptDelay={site.scriptDelay}
+                id={site.id}
               />
             </Grid>
           </Grid>

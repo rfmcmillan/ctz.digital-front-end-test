@@ -12,7 +12,7 @@ function valueLabelFormat(value) {
 }
 
 const ScriptDelaySlider = (props) => {
-  const { scriptDelay } = props;
+  const { scriptDelay, id } = props;
 
   const useStyles = makeStyles({
     scriptDelayContain: { margin: ".5rem" },
@@ -72,6 +72,7 @@ const ScriptDelaySlider = (props) => {
       </Grid>
       <Grid item>
         <Slider
+          key={`${id}`}
           className={classes.scriptDelaySlider}
           defaultValue={scriptDelay}
           getAriaValueText={valuetext}
@@ -90,6 +91,7 @@ const ScriptDelaySlider = (props) => {
 
 ScriptDelaySlider.propTypes = {
   scriptDelay: PropTypes.number,
+  id: PropTypes.number,
 };
 
 export default ScriptDelaySlider;
