@@ -51,7 +51,7 @@ const SiteRow = (props) => {
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
       margin: "16px 0px 16px 0px",
-      width: 700,
+      width: 670,
     },
     rootCurr: {
       backgroundColor: theme.palette.secondary.main,
@@ -60,7 +60,7 @@ const SiteRow = (props) => {
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
       margin: "16px 0px 16px 0px",
 
-      width: 700,
+      width: 670,
     },
     scriptDelay: { width: 250 },
     url: { margin: ".5rem", minWidth: 180 },
@@ -123,13 +123,11 @@ const SiteRow = (props) => {
             <Chip size="small" label="Disabled" />
           )}
         </TableCell>
-        {/* <TableCell className={`${classes.cell} `}> */}
-        <Typography className={classes.button}>
+        <Typography align="right" className={classes.button}>
           <IconButton value={site.id} onClick={handleClick}>
             <ChevronRightIcon fontSize="small" color="inherit" />
           </IconButton>
         </Typography>
-        {/* </TableCell> */}
       </TableRow>
     </Paper>
   );
