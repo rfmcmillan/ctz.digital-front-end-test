@@ -1,7 +1,10 @@
 import React from "react";
 import {
+  Box,
+  Chip,
   List,
   ListItem,
+  ListItemIcon,
   ListItemText,
   ListSubheader,
   Grid,
@@ -10,6 +13,13 @@ import {
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import ScriptDelaySlider from "./ScriptDelaySlider";
+import DoneIcon from "@material-ui/icons/Done";
+import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
+import Icon from "@material-ui/core/Icon";
+import DesktopWindowsRoundedIcon from "@material-ui/icons/DesktopWindowsRounded";
+import LaptopRoundedIcon from "@material-ui/icons/LaptopRounded";
+import StayPrimaryPortraitRoundedIcon from "@material-ui/icons/StayPrimaryPortraitRounded";
+import ProductIcon from "./ProductIcon";
 
 function capitalizeDeviceType(deviceType) {
   const firstLetter = deviceType.slice(0, 1);
@@ -32,13 +42,15 @@ const SiteDetail = (props) => {
     },
     delaySlider: { margin: ".5rem" },
     enabled: { margin: ".5rem" },
+    icon: { marginRight: ".5rem" },
     id: { margin: ".5rem" },
     list: {
       margin: "1rem",
-      minHeight: 250,
+      minHeight: 190,
     },
     name: { margin: ".5rem" },
     root: { margin: "1rem" },
+    products: { marginTop: "2rem" },
     scriptDelay: { width: 250 },
     sitesHeading: {
       color: theme.palette.text.primary,
@@ -77,71 +89,93 @@ const SiteDetail = (props) => {
         Site Detail
       </Typography>
       <Paper elevation={5} className={classes.contain}>
-        <Grid container>
-          <Grid item container direction="column" xs={6}>
-            <Grid item className={classes.name}>
-              <Typography variant="caption" color="textSecondary">
-                Name
-              </Typography>
-              <Typography>
-                {site.name ? site.name : site.displayName}
-              </Typography>
-            </Grid>
-            <Grid className={classes.id} item>
-              <Typography variant="caption" color="textSecondary">
-                ID
-              </Typography>
-              <Typography>{site.id}</Typography>
-            </Grid>
-          </Grid>
-          <Grid item container xs={6} direction="column">
-            <Grid className={classes.url} item>
-              <Typography variant="caption" color="textSecondary">
-                Site URL
-              </Typography>
-              <Typography>{site.domain}</Typography>
-            </Grid>
-            <Grid item className={classes.enabled}>
-              <Typography variant="caption" color="textSecondary">
-                Enabled
-              </Typography>
-              <Typography>{site.enabled ? "Yes" : "No"}</Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-
-        <ScriptDelaySlider
-          className={classes.delaySlider}
-          scriptDelay={site.scriptDelay}
-        />
-        <Grid container>
-          {devicesArray.map((device) => {
-            return (
-              <Grid key={device[0]} item xs={4}>
-                <List
-                  className={classes.list}
-                  dense={true}
-                  key={device[0]}
-                  subheader={
-                    <ListSubheader>
-                      {capitalizeDeviceType(device[0])}
-                    </ListSubheader>
-                  }
-                >
-                  {device[1].products.map((product) => {
-                    return (
-                      <ListItem key={product.type}>
-                        <ListItemText
-                          primary={product.type}
-                          secondary={product.enabled ? "Enabled" : "Disabled"}
-                        />
-                      </ListItem>
-                    );
-                  })}
-                </List>
+        <Grid container direction="column" alignItems="center">
+          <Grid item container>
+            <Grid item container direction="column" xs={6}>
+              <Grid item className={classes.name}>
+                <Typography variant="caption" color="textSecondary">
+                  Name
+                </Typography>
+                <Typography>
+                  {site.name ? site.name : site.displayName}
+                </Typography>
               </Grid>
-            );
-          })}
+              <Grid className={classes.id} item>
+                <Typography variant="caption" color="textSecondary">
+                  ID
+                </Typography>
+                <Typography>{site.id}</Typography>
+              </Grid>
+            </Grid>
+            <Grid item container xs={6} direction="column">
+              <Grid className={classes.url} item>
+                <Typography variant="caption" color="textSecondary">
+                  Site URL
+                </Typography>
+                <Typography>{site.domain}</Typography>
+              </Grid>
+              <Grid item className={classes.enabled}>
+                <Typography variant="caption" color="textSecondary">
+                  Enabled
+                </Typography>
+                <Typography>{site.enabled ? "Yes" : "No"}</Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Typography className={classes.products} align="center">
+              Active Products
+            </Typography>
+            <Grid container justifyContent="space-around">
+              {devicesArray.map((device) => {
+                return (
+                  <Grid key={device[0]} item xs={4}>
+                    <List
+                      className={classes.list}
+                      dense={true}
+                      key={device[0]}
+                      subheader={
+                        <ListSubheader>
+                          <ProductIcon device={device[0]} />
+
+                          {capitalizeDeviceType(device[0])}
+                        </ListSubheader>
+                      }
+                    >
+                      {device[1].products.map((product) => {
+                        return (
+                          <ListItem key={product.type}>
+                            {product.enabled ? (
+                              <Icon
+                                className={classes.icon}
+                                title="Enabled"
+                                color="secondary"
+                              >
+                                <DoneIcon />
+                              </Icon>
+                            ) : (
+                              <Icon className={classes.icon} title="Enabled">
+                                <CloseRoundedIcon />
+                              </Icon>
+                            )}
+                            <Box>
+                              <ListItemText primary={product.type} />
+                            </Box>
+                          </ListItem>
+                        );
+                      })}
+                    </List>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Grid>
+          <Grid item>
+            <ScriptDelaySlider
+              className={classes.delaySlider}
+              scriptDelay={site.scriptDelay}
+            />
+          </Grid>
         </Grid>
       </Paper>
     </div>
