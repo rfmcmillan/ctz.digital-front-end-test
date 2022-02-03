@@ -15,13 +15,6 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import DoneIcon from "@material-ui/icons/Done";
-import ScriptDelaySlider from "./ScriptDelaySlider";
-
-function capitalizeDeviceType(deviceType) {
-  const firstLetter = deviceType.slice(0, 1);
-  const capitalized = firstLetter.toUpperCase();
-  return capitalized + deviceType.slice(1);
-}
 
 const SiteRow = (props) => {
   const {
@@ -29,8 +22,6 @@ const SiteRow = (props) => {
     site,
     site: { activeProducts },
   } = props;
-  console.log("🚀 ~ file: index.js ~ line 32 ~ SiteRow ~ site", site);
-  console.log("🚀 ~ file: index.js ~ line 32 ~ SiteRow ~ currSite", currSite);
 
   const theme = useTheme();
 
@@ -67,9 +58,7 @@ const SiteRow = (props) => {
   });
   const classes = useStyles();
 
-  const handleClick = (event) => {
-    console.log(event.currentTarget.value);
-    // setCurrSite(event.currentTarget.value);
+  const handleClick = () => {
     props.func(site.id);
   };
 

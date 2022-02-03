@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import {
   FormControl,
   FormLabel,
@@ -9,7 +10,6 @@ import {
   RadioGroup,
   Switch,
   Typography,
-  useMediaQuery,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import RevenueShareSlider from "./RevenueShareSlider";
@@ -17,7 +17,6 @@ import RevenueShareSlider from "./RevenueShareSlider";
 const Settings = (props) => {
   const {
     data: {
-      name,
       settings: { general, revenue },
     },
   } = props;
@@ -27,7 +26,6 @@ const Settings = (props) => {
   const [accountType, setAccountType] = useState(general.accountType);
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const useStyles = makeStyles({
     accountType: { margin: ".4rem .5rem .5rem .5rem" },
@@ -186,6 +184,10 @@ const Settings = (props) => {
       </Grid>
     </Paper>
   );
+};
+
+Settings.propTypes = {
+  data: PropTypes.object,
 };
 
 export default Settings;

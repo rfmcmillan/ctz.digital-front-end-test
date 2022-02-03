@@ -53,7 +53,7 @@ const SiteDetail = (props) => {
       minHeight: 190,
     },
     name: { margin: ".5rem" },
-    root: { margin: "1rem 0rem 1rem 1rem" },
+    root: { margin: "0rem 0rem 1rem 1rem" },
     placeHolder: { minHeight: 489 },
     placeHolderText: { color: "#c4c4c4", fontWeight: 800, marginTop: 225 },
     products: { marginTop: "2rem" },
@@ -62,7 +62,7 @@ const SiteDetail = (props) => {
       color: theme.palette.text.primary,
       fontSize: "1.5rem",
       fontWeight: "700",
-      margin: ".5rem",
+      margin: ".5rem .5rem .5rem 0rem",
     },
     url: { margin: ".5rem" },
   });

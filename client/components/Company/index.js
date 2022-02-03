@@ -1,9 +1,7 @@
 import React from "react";
-
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import data from "../../../data.json";
 import Settings from "./Settings";
-
 import AllSites from "./AllSites";
 import { Grid, Typography } from "@material-ui/core";
 
@@ -25,7 +23,7 @@ const Company = () => {
       color: theme.palette.text.primary,
       fontSize: "1.5rem",
       fontWeight: "700",
-      margin: ".5rem .5rem .5rem 1rem",
+      margin: ".5rem .5rem .5rem 0rem",
     },
   });
   const classes = useStyles();

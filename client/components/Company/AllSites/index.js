@@ -13,6 +13,7 @@ const AllSites = ({ sites }) => {
       border: "0px",
       color: theme.palette.text.secondary,
       fontWeight: 500,
+      paddingBottom: "0px",
       textAlign: "left",
     },
     enabled: { width: 100 },
@@ -24,6 +25,7 @@ const AllSites = ({ sites }) => {
       minWidth: 135,
     },
     root: {
+      marginTop: ".5rem",
       width: "75vw",
       [theme.breakpoints.down("lg")]: {
         width: "90vw",
@@ -33,7 +35,7 @@ const AllSites = ({ sites }) => {
       color: theme.palette.text.primary,
       fontSize: "1.5rem",
       fontWeight: "700",
-      margin: ".5rem",
+      margin: ".5rem .5rem 0rem 0rem",
     },
     table: {},
     url: { textAlign: "left", minWidth: 180 },
@@ -47,10 +49,6 @@ const AllSites = ({ sites }) => {
       setCurrSite(found);
     }
   };
-
-  useEffect(() => {
-    console.log("in useEffect", currSite);
-  }, [currSite]);
 
   return (
     <Box
