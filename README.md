@@ -1,23 +1,20 @@
-# _Project title_
+# Clicktripz Front-End Test
 
 _Short description of your project, in one or two sentences._
 
 ## Setup
 
-### Dependencies
-
-_Provide links and descriptions for the third-party libraries you're having your users install._
-
 ### Installation
 
-- Mac OS X
-- Ubuntu
-- Windows (if applicable)
+```
+git clone https://github.com/rfmcmillan/ctz.digital-front-end-test.git
+```
 
 ### Getting started
 
-_What does your user need to know to get everything ready after installation?_
-_Think about databases, config files, and settings._
+```bash
+npm install
+```
 
 ## Usage
 
