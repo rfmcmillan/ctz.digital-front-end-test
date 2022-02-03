@@ -32,7 +32,7 @@ const Settings = (props) => {
   const useStyles = makeStyles({
     accountType: { margin: ".4rem .5rem .5rem .5rem" },
     accountTypeLabel: { fontSize: ".75rem" },
-    enabled: { margin: ".5rem 0rem 0rem 0rem" },
+    enabled: { margin: ".6rem 0rem 0rem 0rem" },
     revenueShareContain: { margin: ".5rem" },
     revenueShareLabel: {
       fontSize: ".75rem",
@@ -48,10 +48,10 @@ const Settings = (props) => {
         width: "90vw",
       },
     },
-    testPublisher: { marginTop: ".5rem" },
+    testPublisher: { marginTop: ".6rem" },
     timezone: { margin: "0rem 0rem 1rem 0rem" },
     timezoneContain: { margin: "0rem .5rem .5rem 1rem" },
-    timezoneLabel: { marginBottom: ".15rem", marginTop: ".5rem" },
+    timezoneLabel: { marginBottom: ".25rem", marginTop: ".5rem" },
   });
   const classes = useStyles();
 
