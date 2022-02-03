@@ -24,7 +24,7 @@ const AllSites = ({ sites }) => {
       minWidth: 135,
     },
     root: {
-      width: "76.5vw",
+      width: "75vw",
       [theme.breakpoints.down("lg")]: {
         width: "90vw",
       },

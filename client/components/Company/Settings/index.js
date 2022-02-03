@@ -43,15 +43,14 @@ const Settings = (props) => {
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
       width: "75vw",
-      margin: 10,
-      padding: ".5rem",
+
       [theme.breakpoints.down("lg")]: {
         width: "90vw",
       },
     },
     testPublisher: { marginTop: "1rem" },
     timezone: { margin: "0rem 0rem 1rem 0rem" },
-    timezoneContain: { margin: ".5rem" },
+    timezoneContain: { margin: ".5rem .5rem .5rem 1rem" },
     timezoneLabel: { marginBottom: ".25rem", marginTop: ".5rem" },
   });
   const classes = useStyles();
