@@ -4,7 +4,6 @@ import {
   Chip,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
   ListSubheader,
   Grid,
