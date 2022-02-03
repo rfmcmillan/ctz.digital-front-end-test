@@ -9,7 +9,7 @@ const Nav = () => {
       fontFamily: "Fredoka One",
       fontSize: 25,
       fontWeight: 900,
-      marginLeft: 10,
+      margin: "2px 0px 0px 10px",
     },
     root: { backgroundColor: theme.palette.text.primary, boxShadow: "none" },
     toolBar: { padding: 10 },

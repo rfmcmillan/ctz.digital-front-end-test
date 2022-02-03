@@ -162,7 +162,7 @@ const SiteDetail = (props) => {
                                   <DoneIcon />
                                 </Icon>
                               ) : (
-                                <Icon className={classes.icon} title="Enabled">
+                                <Icon className={classes.icon} title="Disabled">
                                   <CloseRoundedIcon />
                                 </Icon>
                               )}

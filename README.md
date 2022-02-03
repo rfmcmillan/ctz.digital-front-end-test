@@ -4,11 +4,15 @@
 
 ### Installation
 
+To install the app, please run the below command in the terminal.
+
 ```
 git clone https://github.com/rfmcmillan/ctz.digital-front-end-test.git
 ```
 
 ### Getting started
+
+To begin, please run the below CLI commands to install dependencies, build and start the app.
 
 ```bash
 npm install
