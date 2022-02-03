@@ -12,7 +12,11 @@ git clone https://github.com/rfmcmillan/ctz.digital-front-end-test.git
 
 ```bash
 npm install
+npm run build
+npm run start
 ```
+
+In your browser navigate to http://localhost:8080/.
 
 ## Usage
 
