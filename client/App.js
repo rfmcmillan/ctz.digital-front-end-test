@@ -2,6 +2,7 @@ import React from "react";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import Nav from "./components/Nav";
 import Company from "./components/Company";
+import Routes from "./routes";
 
 const theme = createTheme({
   breakpoints: {
@@ -40,7 +41,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Nav />
-      <Company />
+      <Routes />
     </ThemeProvider>
   );
 };
