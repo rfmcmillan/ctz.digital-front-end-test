@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Paper, Typography } from "@material-ui/core";
+import { Box, Button, Grid, Paper, Typography } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const Terms = () => {
@@ -9,13 +9,28 @@ const Terms = () => {
 
   const useStyles = makeStyles({
     choose: { fontSize: "1rem" },
-    h2: { fontSize: "1.25rem" },
-    root: {
+    chooseBtn: { marginTop: "1rem" },
+    contain: {
       borderRadius: 12,
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
-      width: "33vw",
+
+      // width: "33vw",
+      padding: "1rem",
     },
+    fileDetails: { padding: "0rem 3rem 1rem 3rem" },
+    h1: { fontSize: "1.5rem", fontWeight: 400 },
+    h2: {
+      fontSize: "1.25rem",
+      fontWeight: 400,
+      margin: "1.5rem 0rem .25rem 0rem",
+    },
+    instructions: {
+      fontSize: "1rem",
+      marginTop: "1rem",
+      padding: "0rem 3rem 0rem 3rem",
+    },
+    uploadBtn: { marginTop: "1rem" },
   });
   const classes = useStyles();
 
@@ -28,12 +43,13 @@ const Terms = () => {
     formData.append("myFile", selectedFile, selectedFile.name);
     console.log(selectedFile);
     // axios.post("api/uploadfile", formData);
+    setSelectedFile(null);
   };
 
   const fileData = () => {
     if (selectedFile) {
       return (
-        <div>
+        <div className={classes.fileDetails}>
           <Typography variant="h2" className={classes.h2}>
             File Details:
           </Typography>
@@ -41,11 +57,9 @@ const Terms = () => {
           <Typography variant="body1">
             File Name: {selectedFile.name}
           </Typography>
-
           <Typography variant="body1">
             File Type: {selectedFile.type}
           </Typography>
-
           <Typography variant="body1">
             Last Modified: {selectedFile.lastModifiedDate.toDateString()}
           </Typography>
@@ -64,14 +78,63 @@ const Terms = () => {
   };
 
   return (
-    <Paper elevation={5} className={classes.root}>
-      <Typography>Terms of Service</Typography>
-      <div>
-        <input type="file" onChange={onFileChange} />
-        <button onClick={onFileUpload}>Upload</button>
-      </div>
-      {fileData()}
-    </Paper>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: "85vh" }}
+    >
+      <Grid item xs={3}>
+        <Paper elevation={5} className={classes.contain}>
+          <Grid container direction="column" alignItems="center">
+            <Grid item>
+              <Typography className={classes.h1} variant="h1">
+                Terms of Service
+              </Typography>
+            </Grid>
+            <Grid item>
+              {!selectedFile ? (
+                <Typography
+                  align="center"
+                  className={classes.instructions}
+                  variant="h4"
+                >
+                  If you would like to upload your own custom terms of service,
+                  please choose a file below.
+                </Typography>
+              ) : (
+                ""
+              )}
+            </Grid>
+            <Grid item>
+              {!selectedFile ? (
+                <Button
+                  variant="outlined"
+                  component="label"
+                  className={classes.chooseBtn}
+                >
+                  Choose File
+                  <input type="file" hidden onChange={onFileChange} />
+                </Button>
+              ) : (
+                ""
+              )}
+            </Grid>
+            <Grid item>{fileData()}</Grid>
+            <Button
+              variant="outlined"
+              onClick={onFileUpload}
+              className={classes.uploadBtn}
+              color="primary"
+            >
+              Upload
+            </Button>
+          </Grid>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 
