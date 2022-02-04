@@ -32,9 +32,14 @@ const Nav = () => {
           src="./assets/clicktripz-logo.svg"
           alt="Clicktripz Logo"
         />
-        <Typography variant="h1" className={classes.logoText}>
+        <NavButton
+          id="logo"
+          component={Link}
+          to="/sites"
+          className={classes.logoText}
+        >
           Clicktripz
-        </Typography>
+        </NavButton>
         <NavButton
           className={`${classes.button} ${classes.websites}`}
           id="sites"
