@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Box, Button, Grid, Paper, Typography } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { Button, Grid, Paper, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-const Terms = () => {
+const CustomTerms = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const theme = useTheme();
 
   const useStyles = makeStyles({
     choose: { fontSize: "1rem" },
@@ -14,8 +13,6 @@ const Terms = () => {
       borderRadius: 12,
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
-
-      // width: "33vw",
       padding: "1rem",
     },
     fileDetails: { padding: "0rem 3rem 1rem 3rem" },
@@ -42,7 +39,6 @@ const Terms = () => {
     const formData = new FormData();
     formData.append("myFile", selectedFile, selectedFile.name);
     console.log(selectedFile);
-    // axios.post("api/uploadfile", formData);
     setSelectedFile(null);
   };
 
@@ -91,7 +87,7 @@ const Terms = () => {
           <Grid container direction="column" alignItems="center">
             <Grid item>
               <Typography className={classes.h1} variant="h1">
-                Terms of Service
+                Custom Terms of Service
               </Typography>
             </Grid>
             <Grid item>
@@ -138,8 +134,8 @@ const Terms = () => {
   );
 };
 
-Terms.propTypes = {
+CustomTerms.propTypes = {
   data: PropTypes.object,
 };
 
-export default Terms;
+export default CustomTerms;
