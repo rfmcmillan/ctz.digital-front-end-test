@@ -5,21 +5,33 @@ import CustomTerms from "./CustomTerms";
 import DefaultTerms from "./DefaultTerms";
 
 const Terms = () => {
-  const useStyles = makeStyles({
-    contain: {
-      borderRadius: 12,
-      boxShadow:
-        "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
-      padding: "1rem",
-    },
-  });
+  const useStyles = makeStyles({});
   const classes = useStyles();
 
   return (
-    <div>
-      <DefaultTerms />
-      <CustomTerms />
-    </div>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: "85vh" }}
+    >
+      <Grid
+        item
+        container
+        className={classes.root}
+        justifyContent="space-around"
+        alignItems="center"
+      >
+        <Grid item xs={3}>
+          <DefaultTerms />
+        </Grid>
+        <Grid item xs={3}>
+          <CustomTerms />
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 

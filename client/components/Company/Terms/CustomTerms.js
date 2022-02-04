@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Grid, Paper, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const CustomTerms = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const theme = useTheme();
   const useStyles = makeStyles({
     choose: { fontSize: "1rem" },
     chooseBtn: { marginTop: "1rem" },
@@ -14,6 +14,7 @@ const CustomTerms = () => {
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
       padding: "1rem",
+      width: "25vw",
     },
     fileDetails: { padding: "0rem 3rem 1rem 3rem" },
     h1: { fontSize: "1.5rem", fontWeight: 400 },
@@ -21,6 +22,12 @@ const CustomTerms = () => {
       fontSize: "1.25rem",
       fontWeight: 400,
       margin: "1.5rem 0rem .25rem 0rem",
+    },
+    heading: {
+      color: theme.palette.text.primary,
+      fontSize: "1.5rem",
+      fontWeight: "700",
+      margin: ".5rem .5rem .5rem 0rem",
     },
     instructions: {
       fontSize: "1rem",
@@ -74,63 +81,52 @@ const CustomTerms = () => {
   };
 
   return (
-    <Grid
-      container
-      spacing={0}
-      direction="column"
-      alignItems="center"
-      justify="center"
-      style={{ minHeight: "85vh" }}
-    >
-      <Grid item xs={3}>
-        <Paper elevation={5} className={classes.contain}>
-          <Grid container direction="column" alignItems="center">
-            <Grid item>
-              <Typography className={classes.h1} variant="h1">
-                Custom Terms of Service
-              </Typography>
-            </Grid>
-            <Grid item>
-              {!selectedFile ? (
-                <Typography
-                  align="center"
-                  className={classes.instructions}
-                  variant="h4"
-                >
-                  If you would like to upload your own custom terms of service,
-                  please choose a file below.
-                </Typography>
-              ) : (
-                ""
-              )}
-            </Grid>
-            <Grid item>
-              {!selectedFile ? (
-                <Button
-                  variant="outlined"
-                  component="label"
-                  className={classes.chooseBtn}
-                >
-                  Choose File
-                  <input type="file" hidden onChange={onFileChange} />
-                </Button>
-              ) : (
-                ""
-              )}
-            </Grid>
-            <Grid item>{fileData()}</Grid>
+    <Paper elevation={5} className={classes.contain}>
+      <Grid container direction="column" alignItems="center">
+        <Grid item>
+          <Typography className={classes.heading} variant="h2">
+            Customer Terms of Service
+          </Typography>
+        </Grid>
+        <Grid item>
+          {!selectedFile ? (
+            <Typography
+              align="center"
+              className={classes.instructions}
+              variant="h4"
+            >
+              If you would like to upload your own custom terms of service,
+              please choose a file below.
+            </Typography>
+          ) : (
+            ""
+          )}
+        </Grid>
+        <Grid item>
+          {!selectedFile ? (
             <Button
               variant="outlined"
-              onClick={onFileUpload}
-              className={classes.uploadBtn}
-              color="primary"
+              component="label"
+              className={classes.chooseBtn}
             >
-              Upload
+              Choose File
+              <input type="file" hidden onChange={onFileChange} />
             </Button>
-          </Grid>
-        </Paper>
+          ) : (
+            ""
+          )}
+        </Grid>
+        <Grid item>{fileData()}</Grid>
+        <Button
+          variant="outlined"
+          onClick={onFileUpload}
+          className={classes.uploadBtn}
+          color="primary"
+        >
+          Upload
+        </Button>
       </Grid>
-    </Grid>
+    </Paper>
   );
 };
 
