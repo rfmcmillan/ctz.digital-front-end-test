@@ -54,7 +54,7 @@ const SiteDetail = (props) => {
     root: { margin: "0rem 0rem 1rem 1rem" },
     placeHolder: { minHeight: 489 },
     placeHolderText: { color: "#c4c4c4", fontWeight: 800, marginTop: 225 },
-    products: { marginTop: "2rem" },
+    products: { fontWeight: "500", marginTop: "2rem" },
     scriptDelay: { width: 250 },
     sitesHeading: {
       color: theme.palette.text.primary,
