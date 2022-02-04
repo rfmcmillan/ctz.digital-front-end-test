@@ -146,7 +146,6 @@ const Settings = (props) => {
               />
             </Grid>
           </Grid>
-
           <Grid item container justifyContent="center" xs={4}>
             <Grid item>
               <FormControl className={classes.accountType} component="fieldset">
