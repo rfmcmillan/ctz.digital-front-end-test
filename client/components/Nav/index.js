@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import NavButton from "./NavButton";
 
