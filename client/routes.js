@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
 import data from "../data.json";
 import Company from "./components/Company";
-import AllSites from "./components/Company/AllSites";
 import Terms from "./components/Company/Terms";
 
 class Routes extends Component {

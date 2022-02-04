@@ -69,16 +69,6 @@ const CustomTerms = () => {
         </div>
       );
     }
-    // else {
-    //   return (
-    //     <div>
-    //       <br />
-    //       <Typography className={classes.choose} variant="h4">
-    //         Choose before pressing the Upload button
-    //       </Typography>
-    //     </div>
-    //   );
-    // }
   };
 
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import data from "../../../../data.json";
-import { Button, Grid, Paper, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CustomTerms from "./CustomTerms";
 import DefaultTerms from "./DefaultTerms";
