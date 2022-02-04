@@ -9,10 +9,12 @@ const DefaultTerms = () => {
       borderRadius: 12,
       boxShadow:
         "0 0 2px 0 rgb(145 158 171 / 24%), 0 16px 32px -4px rgb(145 158 171 / 24%)",
+
+      height: "50vh",
+      marginBottom: "2rem",
+      overflow: "auto",
       padding: "1rem",
       width: "33vw",
-      height: "66vh",
-      overflow: "auto",
     },
     heading: {
       color: theme.palette.text.primary,

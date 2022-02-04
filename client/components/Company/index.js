@@ -10,21 +10,13 @@ const Company = () => {
   const theme = useTheme();
 
   const useStyles = makeStyles({
-    allSites: {},
-    contain: {},
     name: {
       color: theme.palette.text.primary,
       fontSize: "2rem",
       fontWeight: "700",
-      margin: ".5rem",
+      margin: "1rem .5rem 0rem .5rem",
     },
     root: { backgroundColor: theme.palette.info.contrastText },
-    settingsHeading: {
-      color: theme.palette.text.primary,
-      fontSize: "1.5rem",
-      fontWeight: "700",
-      margin: ".5rem .5rem .5rem 0rem",
-    },
   });
   const classes = useStyles();
 
@@ -42,13 +34,10 @@ const Company = () => {
           </Typography>
         </Grid>
         <Grid item>
-          <Typography className={classes.settingsHeading} variant="h2">
-            Settings
-          </Typography>
           <Settings data={data} />
         </Grid>
         <Grid item>
-          <AllSites classes={classes.allSites} sites={sites} />
+          <AllSites sites={sites} />
         </Grid>
       </Grid>
     </div>

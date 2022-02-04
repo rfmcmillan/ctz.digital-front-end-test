@@ -46,6 +46,12 @@ const Settings = (props) => {
         width: "90vw",
       },
     },
+    settingsHeading: {
+      color: theme.palette.text.primary,
+      fontSize: "1.5rem",
+      fontWeight: "700",
+      margin: ".5rem .5rem .5rem 0rem",
+    },
     testPublisher: { marginTop: ".6rem" },
     timezone: { margin: "0rem 0rem 1rem 0rem" },
     timezoneContain: { margin: "0rem .5rem .5rem 1rem" },
@@ -69,120 +75,125 @@ const Settings = (props) => {
   };
 
   return (
-    <Paper elevation={5} className={classes.root}>
-      <Grid
-        container
-        direction="row"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <Grid item xs={1}>
-          <Grid
-            className={classes.timezoneContain}
-            container
-            direction="column"
-            justifyContent="flex-start"
-            alignItems="flex-start"
-          >
-            <Grid item className={classes.timezoneLabel}>
-              <Typography color="textSecondary" variant="caption">
-                Timezone
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography className={classes.timezone} variant="body1">
-                {general.timezone}
-              </Typography>
-            </Grid>
-          </Grid>
-        </Grid>
+    <div>
+      <Typography className={classes.settingsHeading} variant="h2">
+        Settings
+      </Typography>
+      <Paper elevation={5} className={classes.root}>
         <Grid
-          item
-          xs={3}
           container
           direction="row"
-          justifyContent="space-around"
+          alignItems="center"
+          justifyContent="space-between"
         >
-          <Grid item>
-            <FormControlLabel
-              className={classes.enabled}
-              control={
-                <Switch
-                  checked={enabled}
-                  inputProps={{ "aria-label": "Enabled Switch" }}
-                  onChange={handleEnabledToggle}
-                  name="enabled"
-                ></Switch>
-              }
-              label={enabled === true ? "Enabled" : "Disabled"}
-            />
+          <Grid item xs={1}>
+            <Grid
+              className={classes.timezoneContain}
+              container
+              direction="column"
+              justifyContent="flex-start"
+              alignItems="flex-start"
+            >
+              <Grid item className={classes.timezoneLabel}>
+                <Typography color="textSecondary" variant="caption">
+                  Timezone
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography className={classes.timezone} variant="body1">
+                  {general.timezone}
+                </Typography>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item>
-            <FormControlLabel
-              className={classes.testPublisher}
-              control={
-                <Switch
-                  checked={testPublisher}
-                  inputProps={{ "aria-label": "Test Publisher Switch" }}
-                  onChange={handleTestPublisherToggle}
-                  name="test-publisher"
-                ></Switch>
-              }
-              label={
-                testPublisher === true
-                  ? "Test Publisher"
-                  : "Not a Test Publisher"
-              }
-            />
+          <Grid
+            item
+            xs={3}
+            container
+            direction="row"
+            justifyContent="space-around"
+          >
+            <Grid item>
+              <FormControlLabel
+                className={classes.enabled}
+                control={
+                  <Switch
+                    checked={enabled}
+                    inputProps={{ "aria-label": "Enabled Switch" }}
+                    onChange={handleEnabledToggle}
+                    name="enabled"
+                  ></Switch>
+                }
+                label={enabled === true ? "Enabled" : "Disabled"}
+              />
+            </Grid>
+            <Grid item>
+              <FormControlLabel
+                className={classes.testPublisher}
+                control={
+                  <Switch
+                    checked={testPublisher}
+                    inputProps={{ "aria-label": "Test Publisher Switch" }}
+                    onChange={handleTestPublisherToggle}
+                    name="test-publisher"
+                  ></Switch>
+                }
+                label={
+                  testPublisher === true
+                    ? "Test Publisher"
+                    : "Not a Test Publisher"
+                }
+              />
+            </Grid>
           </Grid>
-        </Grid>
 
-        <Grid item container justifyContent="center" xs={4}>
-          <Grid item>
-            <FormControl className={classes.accountType} component="fieldset">
-              <FormLabel
-                className={classes.accountTypeLabel}
-                component="legend"
-              >
-                Account Type
-              </FormLabel>
-              <RadioGroup
-                aria-label="account-type"
-                name="account-type"
-                value={accountType}
-                onChange={handleAccountTypeChange}
-              >
-                <Grid container>
-                  <FormControlLabel
-                    value="CTZero"
-                    control={<Radio />}
-                    label="CTZero"
-                  />
-                  <FormControlLabel
-                    value="CTLite"
-                    control={<Radio />}
-                    label="CTLite"
-                  />
-                  <FormControlLabel
-                    value="CTPlus"
-                    control={<Radio />}
-                    label="CTPlus"
-                  />
-                  <FormControlLabel
-                    value="CTPro"
-                    control={<Radio />}
-                    label="CTPro"
-                  />
-                </Grid>
-              </RadioGroup>
-            </FormControl>
+          <Grid item container justifyContent="center" xs={4}>
+            <Grid item>
+              <FormControl className={classes.accountType} component="fieldset">
+                <FormLabel
+                  className={classes.accountTypeLabel}
+                  component="legend"
+                >
+                  Account Type
+                </FormLabel>
+                <RadioGroup
+                  aria-label="account-type"
+                  name="account-type"
+                  value={accountType}
+                  onChange={handleAccountTypeChange}
+                >
+                  <Grid container>
+                    <FormControlLabel
+                      value="CTZero"
+                      control={<Radio />}
+                      label="CTZero"
+                    />
+                    <FormControlLabel
+                      value="CTLite"
+                      control={<Radio />}
+                      label="CTLite"
+                    />
+                    <FormControlLabel
+                      value="CTPlus"
+                      control={<Radio />}
+                      label="CTPlus"
+                    />
+                    <FormControlLabel
+                      value="CTPro"
+                      control={<Radio />}
+                      label="CTPro"
+                    />
+                  </Grid>
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Grid item xs={3}>
+            <RevenueShareSlider publisherShare={revenue.publisherShare} />
           </Grid>
         </Grid>
-        <Grid item xs={3}>
-          <RevenueShareSlider publisherShare={revenue.publisherShare} />
-        </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </div>
   );
 };
 

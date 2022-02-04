@@ -1,37 +1,59 @@
-import React, { useState } from "react";
+import React from "react";
+import data from "../../../../data.json";
 import { Button, Grid, Paper, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CustomTerms from "./CustomTerms";
 import DefaultTerms from "./DefaultTerms";
+import Settings from "../Settings";
 
 const Terms = () => {
-  const useStyles = makeStyles({});
+  const theme = useTheme();
+  const useStyles = makeStyles({
+    name: {
+      color: theme.palette.text.primary,
+      fontSize: "2rem",
+      fontWeight: "700",
+      margin: "1rem .5rem 0rem .5rem",
+    },
+    terms: { marginTop: "2rem", width: "75vw" },
+  });
   const classes = useStyles();
 
   return (
-    <Grid
-      container
-      spacing={0}
-      direction="column"
-      alignItems="center"
-      justifyContent="center"
-      style={{ minHeight: "85vh" }}
-    >
+    <div className={classes.root}>
       <Grid
-        item
         container
-        className={classes.root}
-        justifyContent="space-around"
+        direction="column"
         alignItems="center"
+        className={classes.contain}
       >
-        <Grid item xs={3}>
-          <DefaultTerms />
+        <Grid item>
+          <Typography className={classes.name} variant="h2">
+            {data.name}
+          </Typography>
         </Grid>
-        <Grid item xs={3}>
-          <CustomTerms />
+        <Grid item>
+          <Settings data={data} />
+        </Grid>
+        <Grid
+          className={classes.terms}
+          item
+          container
+          justifyContent="space-around"
+          alignItems="center"
+          spacing={3}
+        >
+          <Grid item xs={6}>
+            <DefaultTerms />
+          </Grid>
+          <Grid item container xs={5} justifyContent="flex-end">
+            <Grid item>
+              <CustomTerms />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 

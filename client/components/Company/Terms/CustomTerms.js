@@ -68,16 +68,17 @@ const CustomTerms = () => {
           </Typography>
         </div>
       );
-    } else {
-      return (
-        <div>
-          <br />
-          <Typography className={classes.choose} variant="h4">
-            Choose before Pressing the Upload button
-          </Typography>
-        </div>
-      );
     }
+    // else {
+    //   return (
+    //     <div>
+    //       <br />
+    //       <Typography className={classes.choose} variant="h4">
+    //         Choose before pressing the Upload button
+    //       </Typography>
+    //     </div>
+    //   );
+    // }
   };
 
   return (
@@ -85,7 +86,7 @@ const CustomTerms = () => {
       <Grid container direction="column" alignItems="center">
         <Grid item>
           <Typography className={classes.heading} variant="h2">
-            Customer Terms of Service
+            Custom Terms of Service
           </Typography>
         </Grid>
         <Grid item>
@@ -117,14 +118,18 @@ const CustomTerms = () => {
           )}
         </Grid>
         <Grid item>{fileData()}</Grid>
-        <Button
-          variant="outlined"
-          onClick={onFileUpload}
-          className={classes.uploadBtn}
-          color="primary"
-        >
-          Upload
-        </Button>
+        {selectedFile ? (
+          <Button
+            variant="outlined"
+            onClick={onFileUpload}
+            className={classes.uploadBtn}
+            color="primary"
+          >
+            Upload
+          </Button>
+        ) : (
+          ""
+        )}
       </Grid>
     </Paper>
   );

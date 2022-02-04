@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
+import data from "../data.json";
 import Company from "./components/Company";
+import AllSites from "./components/Company/AllSites";
 import Terms from "./components/Company/Terms";
 
 class Routes extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      sites: data.sites,
+    };
   }
   async componentDidMount() {}
 
@@ -14,6 +19,7 @@ class Routes extends Component {
       <div>
         <Switch>
           <Route path="/" exact component={Company} />
+          <Route path="/sites" component={Company} />
           <Route path="/terms" exact component={Terms} />
         </Switch>
       </div>

@@ -1,10 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import NavButton from "./NavButton";
 
 const Nav = () => {
   const theme = useTheme();
   const useStyles = makeStyles({
+    button: {
+      color: "white",
+      fontSize: "medium",
+    },
     logoText: {
       fontFamily: "Fredoka One",
       fontSize: 25,
@@ -12,7 +18,9 @@ const Nav = () => {
       margin: "2px 0px 0px 10px",
     },
     root: { backgroundColor: theme.palette.text.primary, boxShadow: "none" },
+    terms: { margin: ".4rem 0rem 0rem 0rem" },
     toolBar: { padding: 10 },
+    websites: { margin: ".4rem 0rem 0rem 1rem" },
   });
   const classes = useStyles();
 
@@ -27,6 +35,22 @@ const Nav = () => {
         <Typography variant="h1" className={classes.logoText}>
           Clicktripz
         </Typography>
+        <NavButton
+          className={`${classes.button} ${classes.websites}`}
+          id="sites"
+          component={Link}
+          to="/sites"
+        >
+          Sites
+        </NavButton>
+        <NavButton
+          className={`${classes.button} ${classes.terms}`}
+          id="terms"
+          component={Link}
+          to="/terms"
+        >
+          Terms of Service
+        </NavButton>
       </Toolbar>
     </AppBar>
   );
